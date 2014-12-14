@@ -9,6 +9,8 @@ image:
 feature:
 comments: true
 mathjax:
+featured: false
+published: true
 ---
 
 ## 实现UIViewControllerTransitioningDelegate协议
