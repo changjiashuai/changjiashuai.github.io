@@ -1,11 +1,15 @@
 ---
 layout: post
 title: "iOS UIViewControllerTransitioning 自定义界面跳转动画"
-date: 2014-07-16 14:18:06 +0800
+description: 自定义界面跳转动画
+modified: 2014-07-16 14:18:06 +0800
+category: iOS
+tags: [iOS, animation]
+image:
+feature:
 comments: true
-categories: [iOS, animation]
+mathjax:
 ---
-
 
 ## 实现UIViewControllerTransitioningDelegate协议
 
