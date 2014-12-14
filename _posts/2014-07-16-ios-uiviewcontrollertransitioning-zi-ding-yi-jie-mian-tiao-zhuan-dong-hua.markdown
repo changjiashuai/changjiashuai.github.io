@@ -38,7 +38,7 @@ Reporting Transition Duration
 ~~~
 
 
-~~~ Objective-C
+~~~
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext
 {
     // 1. Get controllers from transition context
@@ -90,7 +90,7 @@ Managing a Transition
 
 ##结合手势基本逻辑处理
 
-~~~ Objective-C
+~~~
 - (void)handleGesture:(UIPanGestureRecognizer *)gestureRecognizer {
     CGPoint translation = [gestureRecognizer translationInView:gestureRecognizer.view.superview];
     switch (gestureRecognizer.state) {
