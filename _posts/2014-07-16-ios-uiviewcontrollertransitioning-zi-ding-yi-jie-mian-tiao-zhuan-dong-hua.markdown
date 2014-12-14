@@ -13,6 +13,7 @@ featured: false
 published: true
 ---
 
+
 ## 实现UIViewControllerTransitioningDelegate协议
 
 UIViewControllerTransitioningDelegate可以控制view controller的出现（presenting）
@@ -23,7 +24,8 @@ UIViewControllerTransitioningDelegate可以控制view controller的出现（pres
 + 实现UIViewControllerAnimatedTransitioning协议
 + 实现方法
 
-```
+
+~~~
 Performing a Transition
 
 – animateTransition:  required method
@@ -33,10 +35,10 @@ Performing a Transition
 Reporting Transition Duration
 
 – transitionDuration:  required method
-```
+~~~
 
 
-```
+~~~ Objective-C
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext
 {
     // 1. Get controllers from transition context
@@ -65,12 +67,12 @@ Reporting Transition Duration
                          [transitionContext completeTransition:YES];
                      }];
 }
-```
+~~~
 
 
 ##交互动画可以继承UIPercentDrivenInteractiveTransition
 
-```
+~~~
 Accessing Transition Attributes
 
    completionCurve  property
@@ -84,11 +86,11 @@ Managing a Transition
   – updateInteractiveTransition:
   – cancelInteractiveTransition
   – finishInteractiveTransition
-```
+~~~
 
 ##结合手势基本逻辑处理
 
-```
+~~~ Objective-C
 - (void)handleGesture:(UIPanGestureRecognizer *)gestureRecognizer {
     CGPoint translation = [gestureRecognizer translationInView:gestureRecognizer.view.superview];
     switch (gestureRecognizer.state) {
@@ -122,7 +124,7 @@ Managing a Transition
             break;
     }
 }
-```
+~~~
 
 ##在ViewController中应用步骤
 
@@ -130,7 +132,8 @@ Managing a Transition
 + vc.transitioningDelegate = self
 + 实现可选方法：
 
-```
+
+~~~
 Getting the Animator Objects
 
 – animationControllerForPresentedController:presentingController:sourceController:
@@ -141,10 +144,10 @@ Getting the Interactive Transition Object
 
 – interactionControllerForPresentation:
 – interactionControllerForDismissal:
-```
+~~~
 
 + 调用
 
-```
+~~~
 [self presentViewController:vc animated:YES completion:nil];
-```
+~~~
