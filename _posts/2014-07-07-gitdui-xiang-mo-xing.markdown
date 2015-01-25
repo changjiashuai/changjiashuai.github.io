@@ -41,7 +41,7 @@ Git与你熟悉的大部分版本控制系统的差别是很大的。也许你�
 
 一个blob通常用来存储文件的内容.
 
-![](images/git/object-blob.png)
+![](/images/git/object-blob.png)
 
 你可以使用git show命令来查看一个blob对象里的内容。假设我们现在有一个Blob对象的SHA1哈希值，我们可以通过下面的的命令来查看内容：
 
@@ -64,7 +64,7 @@ Git与你熟悉的大部分版本控制系统的差别是很大的。也许你�
 
 一个tree对象有一串(bunch)指向blob对象或是其它tree对象的指针，它一般用来表示内容之间的目录层次关系。
 
-![](images/git/object-tree.png)
+![](/images/git/object-tree.png)
 
 git show命令还可以用来查看tree对象，但是git ls-tree能让你看到更多的细节。如果我们有一个tree对象的SHA1哈希值，我们可以像下面一样来查看它：
 
@@ -111,7 +111,7 @@ Tree对象、blob对象和其它所有的对象一样，都用其内容的SHA1�
 
 "commit对象"指向一个"tree对象", 并且带有相关的描述信息.
 
-![](images/git/object-commit.png)
+![](/images/git/object-commit.png)
 
 你可以用 --pretty=raw 参数来配合 git show 或 git log 去查看某个提交(commit):
 
@@ -177,7 +177,7 @@ Tree对象、blob对象和其它所有的对象一样，都用其内容的SHA1�
 
 ##标签对象
 
-![](images/git/object-tag.png)
+![](/images/git/object-tag.png)
 
 一个标签对象包括一个对象名(译者注:就是SHA1签名),对象类型,标签名,标签创建人的名字("tagger"),
 还有一条可能包含有签名(signature)的消息。你可以用 [git cat-file](http://www.kernel.org/pub/software/scm/git/docs/git-cat-file.html)
