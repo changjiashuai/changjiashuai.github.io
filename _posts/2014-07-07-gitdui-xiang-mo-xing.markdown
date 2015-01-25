@@ -170,7 +170,7 @@ Tree对象、blob对象和其它所有的对象一样，都用其内容的SHA1�
 
 如果我们把它提交(commit)到一个Git仓库中, 在Git中它们也许看起来就如下图:
 
-![](images/git/objects-example.png)
+![](/images/git/objects-example.png)
 
 你可以看到: 每个目录都创建了tree对象(包括根目录),每个文件都创建了一个对应的blob对象。
 最后有一个commit对象来指向根tree对象(root of trees),这样我们就可以追踪项目每一项提交内容.
