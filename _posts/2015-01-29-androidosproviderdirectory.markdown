@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Android系统提供的可用目录"
-description: mac tomcat8
+description: Android Directory
 modified: 2015-01-29 22:19:06 +0800
 category: Android
 tags: [Android, Directory]
