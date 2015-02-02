@@ -103,6 +103,7 @@ published: true
     }  
 
 >在每个activity被创建时加上
+
     //将该activity添加到list中去。
     SysApplication.getInstance().addActivity(this);
 
