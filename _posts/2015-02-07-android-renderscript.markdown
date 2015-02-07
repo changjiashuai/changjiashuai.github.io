@@ -219,12 +219,12 @@ Renderscript代码要保留在<project_root>/src/目录中的*.rs和*.rsh文件�
 使用这个定义是有用的。你能够使用下列编译指令来定义脚本的浮点精度级别：
 
 
-1. #pragma rs_fp_full(如果没指定，这是默认的精度级别)：指示应用程序需要由IEEE 754-2008
+1. `#pragma rs_fp_full`(如果没指定，这是默认的精度级别)：指示应用程序需要由IEEE 754-2008
    标准所描述的浮点精度。
-2. #pragma rs_fp_relaxed：对于不需要严格遵从IEEE 754-2008标准要求精度的应用程序可以
+2. `#pragma rs_fp_relaxed`对于不需要严格遵从IEEE 754-2008标准要求精度的应用程序可以
    使用这种编译指令，对于de-norms（去模）计算这种模式启用了flush-to-zero（清零），
    并且round-towards-zero（向零方向舍入）。
-3. #pragma rs_fp_imprecise：对于没有严格精度要求的应用程序使用这种模式。这种模式沿用了
+3. `#pragma rs_fp_imprecise`对于没有严格精度要求的应用程序使用这种模式。这种模式沿用了
    rs_fp_relaxed模式以下的所有规则：
 
    - 操作结果-0.0会使用+0.0来代替返回；
