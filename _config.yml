@@ -41,7 +41,8 @@ owner:
   google_plus:    Jiashuai Chang
 
 # Analytics and webmaster tools stuff goes here
-google_analytics:
+google_analytics: UA-52767888-1
+google_analytics_tracking_id: UA-52767888-1
 google_verify:
 # https://ssl.bing.com/webmaster/configure/verify/ownership Option 2 content= goes here
 bing_verify:
