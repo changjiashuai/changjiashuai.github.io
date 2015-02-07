@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "ndroid Renderscript（一）"
-description: ndroid Renderscript
+title: "Android Renderscript（一）"
+description: Android Renderscript
 modified: 2015-02-07 11:07:06 +0800
 category: Android Renderscript
 tags: [Android, Renderscript]
