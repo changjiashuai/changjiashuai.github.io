@@ -36,6 +36,7 @@ vi /etc/profile
 ~~~
 
 1. 配置`JAVA_HOME`在这个文件末尾加上
+
 	
 	~~~
 	export JAVA_HOME=/usr/java/jdk1.8.0
@@ -43,6 +44,7 @@ vi /etc/profile
 	export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 	export PATH=$PATH:/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin:$JAVA_HOME/bin
 	~~~
+	
 	
 2. 配置`TOMCAT_HOME`
 	
