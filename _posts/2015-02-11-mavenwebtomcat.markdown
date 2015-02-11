@@ -17,7 +17,7 @@ published: true
 
 Maven自动部署实际上调的是Tomcat安装目录下的manager功能。而为了能正常访问`http://localhost:8080/manager`页面，我们需要修改`$TOMCAT_HOME/conf`目录下的`tomcat-users.xml`
 
-```
+~~~
 <tomcat-users>
   <role rolename="tomcat"/>
   <role rolename="manager"/>
@@ -27,13 +27,13 @@ Maven自动部署实际上调的是Tomcat安装目录下的manager功能。而�
   <user username="tomcat" password="tomcat" roles="tomcat,manager,
       manager-gui,manager-script,admin-gui" />
 </tomcat-users>					
-```
+~~~
 
 ##修改pom.xml增加Tomcat Maven插件
 
 我使用的Tomcat7，pom.xml中增加如下配置：
 
-```
+~~~
 <plugin>
 	<groupId>org.apache.tomcat.maven</groupId>
 	<artifactId>tomcat7-maven-plugin</artifactId>
@@ -48,14 +48,14 @@ Maven自动部署实际上调的是Tomcat安装目录下的manager功能。而�
 		<path>/${finalName}</path>
 	</configuration>
 </plugin>
-```	
+~~~
 上面username、password来自tomcat-users.xml。server是Tomcat服务器名称。path是访问应用的路径。url指定Tomcat管理页路径。
 
 ##修改Maven的settings.xml
 
 在`$USER_HOME/.m2`目录下找到`settings.xml`，添加server节点
 
-```
+~~~
 <servers>
     <server>
        <id>tomcat</id>
@@ -63,20 +63,20 @@ Maven自动部署实际上调的是Tomcat安装目录下的manager功能。而�
        <password>tomcat</password>
     </server>
 </servers>
-```
+~~~
 上面的username、password依然与`tomcat-users.xml`中相同，id与`pom.xml`中的server相同
 
 ##部署项目到Tomcat
 
 先确保Tomcat服务器已经启动，然后cd到项目根目录，运行下面的命令
 
-```
+~~~
 mvn clean tomcat7:redeploy
-```
+~~~
 
 ##部署成功，如下:
 
-```
+~~~
 ➜  party  mvn clean tomcat7:redeploy
 [INFO] Scanning for projects...
 [INFO]                                                                         
@@ -132,7 +132,7 @@ Uploaded: http://xxxx:8080/manager/text/deploy?path=%2Fparty&update=true (1774 K
 [INFO] Final Memory: 15M/81M
 [INFO] ------------------------------------------------------------------------
 ➜  party  
-```
+~~~
 
 然后我们就能在Tomcat安装目录的webapps目录下找到新部署的WAR包。
 
