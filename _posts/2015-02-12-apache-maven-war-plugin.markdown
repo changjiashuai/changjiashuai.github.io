@@ -16,7 +16,9 @@ published: true
 `Apache Maven WAR`插件负责收集所有工件的依赖性,web应用程序的类和资源,包装成一个web应用程序存档。
 
 ---
+
 ##目标概述
+
 
 + `war:war` 构建一个war文件
 + `war:exploded`开发阶段加速测试通常用来生成一个额外的webapp文件夹
@@ -24,9 +26,11 @@ published: true
 + `war:manifest`为这个应用生成一个清单。清单文件在web应用程序源目录中创建
 
 ---
+
 ##使用
 
-######1.使用`war:war`
+
+#####1.使用`war:war`
 
 这是正常的使用maven-war插件方式。为了说明这一点,这是pom.xml中我们的项目
 
@@ -102,7 +106,7 @@ documentedproject-1.0-SNAPSHOT.war
       `-- websource.jsp
 ~~~
 
-######2.使用`war:exploded`
+#####2.使用`war:exploded`
 
 开发阶段加速测试可以使用`war:exploded`
 
@@ -150,7 +154,7 @@ mvn compile war:exploded
 </project>
 ~~~
 
-######3.使用`war:inplace`
+#####3.使用`war:inplace`
 
 类似`war:exploded`只是webapp文件夹目录位置不一样，默认在`src/main/webapp`
 
