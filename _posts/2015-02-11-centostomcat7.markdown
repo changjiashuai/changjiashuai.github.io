@@ -35,58 +35,59 @@ mv apache-tomcat-7.0.59/ tomcat7
 vi /etc/profile
 ~~~
 
-1. 配置`JAVA_HOME`在这个文件末尾加上
 
-		~~~
-		export JAVA_HOME=/usr/java/jdk1.8.0
-		export JRE_HOME=/usr/java/jdk1.8.0/jre
-		export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
-		export PATH=$PATH:/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin:$JAVA_HOME/bin
-		~~~
-	
-	
-2. 配置`TOMCAT_HOME`
-	
-	~~~
-	cd /usr/local/tomcat7/bin
-	vi catalina.sh
-	~~~
-	
-	在`#!/bin/sh`后面加上
-	
-	~~~
-	export TOMCAT_HOME=/usr/local/tomcat7
-	export CATALINA_HOME=/usr/local/tomcat7
-	~~~
+######1. 配置`JAVA_HOME`在这个文件末尾加上
+
+~~~
+export JAVA_HOME=/usr/java/jdk1.8.0
+export JRE_HOME=/usr/java/jdk1.8.0/jre
+export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+export PATH=$PATH:/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin:$JAVA_HOME/bin
+~~~
 
 
-3. 利用下面命令使文件有执行权限并使配置生效
+######2. 配置`TOMCAT_HOME`
 
-	~~~
-	source /etc/profile
-	cd /usr/local/tomcat7/bin
-	chmod 777 *.*
-	~~~
-	
+~~~
+cd /usr/local/tomcat7/bin
+vi catalina.sh
+~~~
+
+在`#!/bin/sh`后面加上
+
+~~~
+export TOMCAT_HOME=/usr/local/tomcat7
+export CATALINA_HOME=/usr/local/tomcat7
+~~~
+
+
+######3. 利用下面命令使文件有执行权限并使配置生效
+
+~~~
+source /etc/profile
+cd /usr/local/tomcat7/bin
+chmod 777 *.*
+~~~
+
 ##配置tomcat
 
-1. 将tomcat加入开机自启动
-	
-	~~~
-	echo "source /etc/profile" >>/etc/rc.d/rc.local
- 	echo "/usr/local/tomcat7/bin/startup.sh" >>/etc/rc.d/rc.local  
-	~~~
-	
-	>这里有点要说明，rc.local先于/etc/profile执行，所以会得不到JAVA环境变量，所以在startup.sh前加入代码：source /etc/profile  这样就可以
+######1. 将tomcat加入开机自启动
 
-	
-2. 关闭防火墙
-	
-	~~~
-	chkconfig iptables off iptables
-	service iptables stop
-	~~~
-	
+~~~
+echo "source /etc/profile" >>/etc/rc.d/rc.local
+echo "/usr/local/tomcat7/bin/startup.sh" >>/etc/rc.d/rc.local  
+~~~
+
+>这里有点要说明，rc.local先于/etc/profile执行，所以会得不到JAVA环境变量，所以在startup.sh前加入代码：source /etc/profile  这样就可以
+
+
+######2. 关闭防火墙
+
+~~~
+chkconfig iptables off iptables
+service iptables stop
+~~~
+
 ##测试
 
 ~~~
