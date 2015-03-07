@@ -18,15 +18,15 @@ published: true
 2. 从百度网盘下载别人下载好的[Android5.0](http://pan.baidu.com/s/1c0nhX5Y)
 
 ##编译源码
-1. 进入Android 源码根目录
-2. 执行
+#####1. 进入Android 源码根目录
+#####2. 执行
 
 ~~~
 #这行命令的意思是编译idegen这个项目,生成idegen.jar文件.生成成功后,会显示这个jar包的位置,并显示 #### make completed successfully (20 seconds)####
 mmm development/tools/idegen/
 ~~~
 
-3. 执行
+#####3. 执行
 
 ~~~
 #这行命令的意思是生成对应的文件:android.iws, android.ipr, android.iml .
