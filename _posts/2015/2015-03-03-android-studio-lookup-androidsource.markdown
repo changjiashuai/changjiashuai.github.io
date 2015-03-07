@@ -20,12 +20,14 @@ published: true
 ##编译源码
 1. 进入Android 源码根目录
 2. 执行
-~~~
-#这行命令的意思是编译idegen这个项目,生成idegen.jar文件.生成成功后,会显示这个jar包的位置,并显示 #### make completed successfully (43 seconds) ####
-mmm development/tools/idegen/
-~~~
+
+    ~~~
+    #这行命令的意思是编译idegen这个项目,生成idegen.jar文件.生成成功后,会显示这个jar包的位置,并显示 #### make completed successfully (43 seconds) ####
+    mmm development/tools/idegen/
+    ~~~
 
 3. 执行
+
 ~~~
 #这行命令的意思是生成对应的文件:android.iws, android.ipr, android.iml .
 sh ./development/tools/idegen/idegen.sh
