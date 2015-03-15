@@ -62,3 +62,5 @@ published: true
 
 
 ##通过像素r,g,b,a分量处理图像
+
+[PixelActivity](https://coding.net/u/changjiashuai/p/BitmapFilter/git/blob/master/app/src/main/java/com/cjs/bitmapfilter/PixelActivity.java)
