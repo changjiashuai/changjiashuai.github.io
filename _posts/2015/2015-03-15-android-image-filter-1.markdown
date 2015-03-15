@@ -26,6 +26,8 @@ published: true
 
 ##通过颜色矩阵处理图形
 
+[ColorMatrixActivity](https://coding.net/u/changjiashuai/p/BitmapFilter/git/blob/master/app/src/main/java/com/cjs/bitmapfilter/ColorMatrixActivity.java)
+
 ### 颜色矩阵(ColorMatrix)
 
 颜色矩阵M是一个5*4的矩阵，如图1所示。在Android中，颜色矩阵M是以一维数组m=[a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t]的方式进行存储的。
@@ -57,6 +59,6 @@ published: true
     0, 0, 1, 0, 0
     0, 0, 0, 1, 0
 
-[ColorMatrixActivity](https://coding.net/u/changjiashuai/p/BitmapFilter/git/blob/master/app/src/main/java/com/cjs/bitmapfilter/ColorMatrixActivity.java)
+
 
 ##通过像素r,g,b,a分量处理图像
