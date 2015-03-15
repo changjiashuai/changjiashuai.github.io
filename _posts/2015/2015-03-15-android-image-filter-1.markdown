@@ -57,4 +57,6 @@ published: true
     0, 0, 1, 0, 0
     0, 0, 0, 1, 0
 
+[ColorMatrixActivity](https://coding.net/u/changjiashuai/p/BitmapFilter/git/blob/master/app/src/main/java/com/cjs/bitmapfilter/ColorMatrixActivity.java)
+
 ##通过像素r,g,b,a分量处理图像
