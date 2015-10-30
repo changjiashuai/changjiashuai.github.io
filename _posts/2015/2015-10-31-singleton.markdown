@@ -15,6 +15,8 @@ mathjax:
 ## Swift
 
 ```
+
+
 //: 第一种实现方式  懒汉
 class Singleton: NSObject {
     class var shared: Singleton{
@@ -132,5 +134,7 @@ class Singleton6{
         return singleton6;
     }
 }
+
+
 
 ```
