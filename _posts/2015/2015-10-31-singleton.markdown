@@ -14,8 +14,8 @@ mathjax:
 
 ## Swift
 
-```
 
+```
 
 //: 第一种实现方式  懒汉
 class Singleton: NSObject {
@@ -53,6 +53,7 @@ class Singleton2: NSObject{
 ```
 
 ## Java
+
 
 ```
 
