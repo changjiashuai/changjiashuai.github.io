@@ -23,7 +23,9 @@ published: true
 + `Create` — create an Observable from scratch by calling observer methods programmatically
   >从头开始创建一个通过调用观察者可观测的编程方法
 
+
   ---
+    ~~~
       Observable.create(new OnSubscribe<String>() {
             @Override
             public void call(Subscriber<? super String> subscriber) {
@@ -51,6 +53,7 @@ published: true
   >不创建直到观察者订阅,并创建一个新的观察为每个观察者
 
   ---
+    ~~~
       Observable.defer(new Func0<Observable<String>>() {
             @Override
             public Observable<String> call() {
