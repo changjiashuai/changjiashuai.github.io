@@ -1,3 +1,17 @@
+---
+layout: post
+title: "deploy to heroku"
+description: deploy to heroku
+headline: jersey java
+modified: 2015-12-16
+category: jersey java
+tags: [jersey, java]
+image:
+feature:
+comments: true
+mathjax:
+---
+
 ## deploy to heroku
 
 ## install heroku
@@ -12,7 +26,7 @@
 	<groupId>org.glassfish.jersey.archetypes</groupId>
 	<artifactId>jersey-heroku-webapp</artifactId>
 	<version>2.22.1</version>
-</dependency> 
+</dependency>
 ~~~
 
 ~~~
@@ -126,11 +140,11 @@ remote:        [INFO] Final Memory: 27M/157M
 remote:        [INFO] ------------------------------------------------------------------------
 remote: -----> Discovering process types
 remote:        Procfile declares types -> web
-remote: 
+remote:
 remote: -----> Compressing... done, 73.9MB
 remote: -----> Launching... done, v5
 remote:        https://desolate-sierra-6321.herokuapp.com/ deployed to Heroku
-remote: 
+remote:
 remote: Verifying deploy.... done.
 To https://git.heroku.com/desolate-sierra-6321.git
  * [new branch]      master -> master
