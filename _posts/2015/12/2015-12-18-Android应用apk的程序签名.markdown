@@ -1,3 +1,16 @@
+---
+layout: post
+title: Android应用apk的程序签名
+description: Android应用apk的程序签名
+headline:
+modified: 2015-12-18
+tags:
+image:
+feature:
+comments: true
+mathjax:
+---
+
 ## Android应用apk的程序签名
 
 #### 关于Android应用程序签名主要有以下几个重点：
@@ -71,7 +84,7 @@ Debug模式下签名用的证书自从它创建之日起，1年后就会失效�
 
 ~~~
 1	debug:
-2	
+2
 [echo] Packaging bin/samples-debug.apk, and signing it with a debug key...
 3	[exec] Debug Certificate expired on 8/4/08 3:43 PM
 ~~~

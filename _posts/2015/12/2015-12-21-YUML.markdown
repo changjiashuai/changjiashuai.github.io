@@ -1,3 +1,16 @@
+---
+layout: post
+title: YUML
+description: YUML
+modified: 2015-12-21
+category:
+tags:
+image:
+feature:
+comments: true
+mathjax:
+---
+
 YUML支持3种图示风格，分别是：
 =======================
   1. plain
@@ -7,7 +20,7 @@ YUML支持3种图示风格，分别是：
 用例图
 ===
 > 1. 角色(Actor)
-> 2. 使用[角色名] 
+> 2. 使用[角色名]
 
 ![](http://yuml.me/diagram/plain/usecase/[Customer])
 ![](http://yuml.me/diagram/scruffy/usecase/[Customer])
@@ -19,12 +32,12 @@ YUML支持3种图示风格，分别是：
 ![](http://yuml.me/diagram/scruffy/usecase/[Customer]-(Login),[Customer]-(Logout))
 
 
-> 1. 备注(Notes) 
+> 1. 备注(Notes)
 > 2. 如果用例名以note:开头,表明那是一个备注,可以用{bg:颜色名}定义备注的背景色
 
 
 
-![](http://yuml.me/diagram/scruffy/usecase/[Customer]-(Login), 
+![](http://yuml.me/diagram/scruffy/usecase/[Customer]-(Login),
 [Customer]-(note:Cust can be registered or not{bg:beige}))
 
 ![](http://yuml.me/diagram/nofunky/usecase/[Customer]-(Login),
