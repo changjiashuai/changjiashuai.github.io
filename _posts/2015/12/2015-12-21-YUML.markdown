@@ -1,0 +1,38 @@
+YUML支持3种图示风格，分别是：
+=======================
+  1. plain
+  2. scruffy
+  3. boring
+
+用例图
+===
+> 1. 角色(Actor)
+> 2. 使用[角色名] 
+
+![](http://yuml.me/diagram/plain/usecase/[Customer])
+![](http://yuml.me/diagram/scruffy/usecase/[Customer])
+![](http://yuml.me/diagram/boring/usecase/[Customer])
+
+> 用例(Use Case)
+> 使用(用例名)表示用例，`-`表示角色和用例之间的关联。
+
+![](http://yuml.me/diagram/scruffy/usecase/[Customer]-(Login),[Customer]-(Logout))
+
+
+> 1. 备注(Notes) 
+> 2. 如果用例名以note:开头,表明那是一个备注,可以用{bg:颜色名}定义备注的背景色
+
+
+
+![](http://yuml.me/diagram/scruffy/usecase/[Customer]-(Login), 
+[Customer]-(note:Cust can be registered or not{bg:beige}))
+
+![](http://yuml.me/diagram/nofunky/usecase/[Customer]-(Login),
+[Customer]-(note:Cust can be registered or not{bg:beige}))
+
+
+
+
+
+
+  <img src="http://yuml.me/diagram/nofunky/usecase/(note: figure 1.2{bg:beige}), [User]-(Login),[Site Maintainer]-(Add User),(Add User)<(Add Company),[Site Maintainer]-(Upload Docs),(Upload Docs)<(Manage Folders),[User]-(Upload Docs), [User]-(Full Text Search Docs), (Full Text Search Docs)>(Preview Doc),(Full Text Search Docs)>(Download Docs), [User]-(Browse Docs), (Browse Docs)>(Preview Doc), (Download Docs), [Site Maintainer]-(Post New Event To The Web Site), [User]-(View Events)" >
