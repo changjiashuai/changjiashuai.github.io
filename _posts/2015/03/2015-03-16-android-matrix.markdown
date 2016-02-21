@@ -39,7 +39,7 @@ Matrix的对图像的处理可分为四类基本变换：
 
 ##平移变换
 
-假定有一个点的坐标是![](/images/Matrix/Matrix2.gif)，将其移动到![](/images/Matrix/Matrix3.gif)，再假定在x轴和y轴方向移动的大小分别为：
+假定有一个点的坐标是![](/images/2015/03/Matrix/Matrix2.gif)，将其移动到![](/images/Matrix/Matrix3.gif)，再假定在x轴和y轴方向移动的大小分别为：
 ![](/images/Matrix/Matrix4.gif)
 
 如下图所示：
