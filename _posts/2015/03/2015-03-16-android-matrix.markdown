@@ -16,7 +16,7 @@ published: true
 ##Matrix的数学原理
 
 在Android中，如果你用Matrix进行过图像处理，那么一定知道Matrix这个类。Android中的Matrix是一个3 x 3的矩阵，其内容如下：
-![](/images/Matrix/Matrix1.gif)
+![](/2015/03/images/Matrix/Matrix1.gif)
 
 Matrix的对图像的处理可分为四类基本变换：
 
