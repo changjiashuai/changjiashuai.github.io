@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "查看历史--Git日志 "
+title: 查看历史--Git日志
 date: 2014-07-11 09:49:52 +0800
 comments: true
 categories: [git]
@@ -10,7 +10,7 @@ categories: [git]
 
 [git log](http://www.kernel.org/pub/software/scm/git/docs/git-log.html)命令可以显示所有的提交(commit).....
 
-##显示补丁(patchs):
+## 显示补丁(patchs):
 
     $ git log -p
 
@@ -34,7 +34,8 @@ categories: [git]
 
      pserver (/etc/inetd.conf):
 
- ##日志统计
+ ## 日志统计
+
  如果用`--stat`选项使用`git log`,它会显示在每个提交（commit）中哪些文件被修改了，这些文件分别添加或删除了多少行内容。
 
      ➜  changjiashuai git:(master) git log --stat
@@ -61,7 +62,7 @@ categories: [git]
     Author: changjiashuai <changjiashuai@gmail.com>
     Date:   Thu Jul 10 13:45:17 2014 +0800
 
-##格式化日志
+## 格式化日志
 你可以按你的要求来格式化日志输出。`--pretty`参数可以使用若干表现格式，如`oneline`:
 
     ➜  changjiashuai git:(master) git log --pretty=oneline
@@ -111,7 +112,7 @@ categories: [git]
 
 它会用ASCII字符来画出一个很漂亮的提交历史(commit history)线。
 
-##日志排序
+## 日志排序
 
 你也可以把日志记录按一些不同的顺序来显示。
 *注意：git日志从最近的提交(commit)开始，并且从这里开始向它们父分支回溯。然而git历史可能包括多个互不关联的开发路线，这样有时提交(commit)显示出来就有点杂乱。*

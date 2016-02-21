@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "关于Swift"
+title: 关于Swift
 date: 2014-06-03 14:06:20 +0800
 comments: true
 categories: [Swift]

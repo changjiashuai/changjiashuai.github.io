@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "Git目录与工作目录"
+title: Git目录与工作目录
 date: 2014-07-08 12:17:34 +0800
 comments: true
 categories: [git]
 ---
 
 
-##Git目录
+## Git目录
 
 'Git目录'是为你的项目存储所有历史和元信息的目录--包括所有的对象（commits，trees，blobs，tags）
 这些对象指向不同的分支。

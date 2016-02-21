@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "iOS UIViewControllerTransitioning 自定义界面跳转动画"
+title: iOS UIViewControllerTransitioning 自定义界面跳转动画
 description: 自定义界面跳转动画
 modified: 2014-07-16 14:18:06 +0800
 category: iOS
@@ -19,7 +19,7 @@ published: true
 UIViewControllerTransitioningDelegate可以控制view controller的出现（presenting）
 ，消失（dismissing），interacting（交互）动画。
 
-##自定义动画步骤
+## 自定义动画步骤
 
 + 实现UIViewControllerAnimatedTransitioning协议
 + 实现方法
@@ -70,7 +70,7 @@ Reporting Transition Duration
 ~~~
 
 
-##交互动画可以继承UIPercentDrivenInteractiveTransition
+## 交互动画可以继承UIPercentDrivenInteractiveTransition
 
 ~~~
 Accessing Transition Attributes
@@ -88,7 +88,7 @@ Managing a Transition
   – finishInteractiveTransition
 ~~~
 
-##结合手势基本逻辑处理
+## 结合手势基本逻辑处理
 
 ~~~
 - (void)handleGesture:(UIPanGestureRecognizer *)gestureRecognizer {
@@ -126,7 +126,7 @@ Managing a Transition
 }
 ~~~
 
-##在ViewController中应用步骤
+## 在ViewController中应用步骤
 
 + 实现UIViewControllerTransitioningDelegate协议
 + vc.transitioningDelegate = self

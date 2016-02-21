@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Swift基础---Booleans"
+title: Swift基础---Booleans
 date: 2014-06-06 14:21:06 +0800
 comments: true
 categories: [Swift]

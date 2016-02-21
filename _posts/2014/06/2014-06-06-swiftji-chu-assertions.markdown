@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Swift基础---Assertions"
+title: Swift基础---Assertions
 date: 2014-06-06 14:27:03 +0800
 comments: true
 categories: [Swift]

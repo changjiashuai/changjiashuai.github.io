@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Android Renderscript（一）"
+title: Android Renderscript（一）
 description: Android Renderscript
 modified: 2015-02-07 11:07:06 +0800
 category: Android Renderscript
@@ -25,7 +25,7 @@ published: true
 弃用了（rs_graphics.rsh中的大多数API和android.renderscript中对应的API）。如果你有使用
 Renderscript来渲染图形的应用程序，强烈推荐你把代码转换到另外的Android图形渲染选项。
 
-##Renderscript系统概述
+## Renderscript系统概述
 
 Renderscript运行时的操作是原生级别的，并且依然需要跟Android的虚拟机（VM）进行通信，因此
 创建一个Renderscript应用程序的方法不同于纯粹的虚拟机应用程序。除了你为程序编写的所需要的
@@ -39,9 +39,9 @@ Renderscript运行时的绑定内存的控制，因此Renderscript的代码能�
 异步的方式调用Renderscript，并且调用会被放到消息队列中，直到它被处理。
 图1显示了Renderscript系统的结构：
 
-![](/images/renderscript1.png)
+![](/assets/images/2015/02/renderscript1.png)
 
-##在使用Renderscript时，在Renderscript运行时和Android框架代码之间有三个层次来确保API的通信：
+## 在使用Renderscript时，在Renderscript运行时和Android框架代码之间有三个层次来确保API的通信：
 
 1. Renderscript运行时API，它允许执行应用程序所需要的计算。
 2. 反射层API是一组从Renderscript运行代码中反射出来的类。它是围绕Renderscript代码的一个
@@ -49,21 +49,21 @@ Renderscript运行时的绑定内存的控制，因此Renderscript的代码能�
    期间会自动的生成这个层次的类。这些类跟NDK代码一样不需要编写JNI代码。
 3. Android框架层，它调用反射层来访问Renderscript运行时。
 
-##Renderscript的这种结构的主要优点是：
+## Renderscript的这种结构的主要优点是：
 
 1. 便捷性：Renderscript被设计层可运行在不同处理器（CPU、GPU和DSP的实例）架构的很多设备上。
    它所支持的所有这些架构，都不是针对每个特定设备的，因为它的代码会在运行时在设备上被编译和缓存。
 2. 高效性：Renderscript通过跨越设备上的过个内核，用并行的方式，提供了高性能的计算API。
 3. 易用性：Renderscript在可能的情况下，简化了开发，如取消了JNI代码。
 
-##主要缺点是：
+## 主要缺点是：
 
 1. 开发的复杂性：Renderscript引入了一组新的需要你学习的API；
 
 2. 调试的可见性：Renderscript可能在主CPU以外的处理器（如GPU）上执行（后续的发布计划中），
    因此如果发生这种事情，调试会变的更加困难。
 
-##创建Renderscript  
+## 创建Renderscript  
 Renderscript扩大了设备上可用的处理器内核的范围。这种能力是通过名叫rsForEach()
 (或者是Android框架级别下的forEach_root()方法)方法来获得的。它会自动的区分访问设备设备上
 可用的处理器内核的工作。目前，Renderscript只能利用CPU内核的优势，但是在将来，它们会能够
@@ -73,12 +73,12 @@ Renderscript扩大了设备上可用的处理器内核的范围。这种能力�
 用forEach_root()方法调用该文件（或者是在Renderscript级别下用rsForEach()函数调用该文件）。
 下图介绍了如何建立一个典型的Renderscript：
 
-![](/images/renderscript2.png)
+![](/assets/images/2015/02/renderscript2.png)
 
-##以下章节介绍如何创建一个简单的Renderscript，并且要在一个Android应用程序中使用它。
+## 以下章节介绍如何创建一个简单的Renderscript，并且要在一个Android应用程序中使用它。
   这个例子使用了SDK开发指南中提供的HelloCompute Renderscript示例。
 
-##创建Renderscript文件
+## 创建Renderscript文件
 
 Renderscript代码要保留在<project_root>/src/目录中的*.rs和*.rsh文件中。代码中包含了计算
 的逻辑和所有必要的变量和指针的声明。通常，每个*.rs文件要包含下列项目：
@@ -106,7 +106,7 @@ Renderscript代码要保留在<project_root>/src/目录中的*.rs和*.rsh文件�
 
 5. 在Renderscript代码中要使用的任何变量、指针和结构体（如果需要，能够在*.rsh文件中声明）。
 
-##下列代码显示了mono.rs文件是如何实现的：
+## 下列代码显示了mono.rs文件是如何实现的：
 
     #pragma version(1)
     #pragma rs java_package_name(com.example.android.rs.hellocompute)
@@ -124,13 +124,13 @@ Renderscript代码要保留在<project_root>/src/目录中的*.rs和*.rsh文件�
     }
 
 
-##调用Renderscript代码
+## 调用Renderscript代码
 
 你能够通过由实例化的类（ScriptC_script_name）来创建一个Renderscript对象从Android框架代      码中调用Renderscript。这个类包含了一个forEach_root（）方法，它会调用rsForeach()方法。
 你能够传递给它与Renderscript运行时级别调用相同的参数。这种技术允许你的Android应用程序把
 高精度的数学计算转交给Renderscript。
 
-##在Android框架层次调用Renderscript的方法：
+## 在Android框架层次调用Renderscript的方法：
 
 1. 在你的Android框架代码中分配Renderscript所需要的内存。对于Androi3.2(API Level 13)
    以前的版本，需要分配输入和输出内存。Android4.0（API Level 14）以后的平台版本只需要
@@ -194,7 +194,7 @@ Renderscript代码要保留在<project_root>/src/目录中的*.rs和*.rsh文件�
       }
     }
 
-##以下是从另一个Renderscript文件中调用Renderscript的方法：
+## 以下是从另一个Renderscript文件中调用Renderscript的方法：
 
 1. 在Android框架代码中分配由Renderscript所需要的内存。对于Android3.2平台和之前的版本，
    要同时分配输入和输出内存。Android4.0平台版本之后可以根据需要来分配输入和输出内存。
@@ -213,7 +213,7 @@ Renderscript代码要保留在<project_root>/src/目录中的*.rs和*.rsh文件�
 声明的结构。把这个结构的指针和它的大小传递一个rsForEach()方法，这是一个可选的参数。如果你
 的Renderscript需要一些输入内存中之外的信息，就可以使用这个参数。
 
-##设置浮点精度
+## 设置浮点精度
 
 你能够定义计算规则所需要的浮点精度。如果你需要比IEEE 754-2008标准（默认使用的标准）更小的精度，
 使用这个定义是有用的。你能够使用下列编译指令来定义脚本的浮点精度级别：

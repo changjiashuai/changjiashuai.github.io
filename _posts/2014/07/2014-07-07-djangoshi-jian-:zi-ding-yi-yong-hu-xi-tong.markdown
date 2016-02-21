@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "Django实践：自定义用户系统"
+title: Django实践：自定义用户系统
 date: 2014-07-07 15:01:15 +0800
 comments: true
 categories: [Django, Python]
 ---
 
 
-##扩展Django的用户系统有几个方法：
+## 扩展Django的用户系统有几个方法：
 
 + 1.在自定义Model中使用OneToOneField的方式来扩展，实现一个User Profile。
 这种方式在1.5之前是推荐的，在User也有一个默认的get_profile方法来获取这个profile。

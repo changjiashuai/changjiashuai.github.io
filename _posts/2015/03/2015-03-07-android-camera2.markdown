@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Android Camera2"
+title: Android Camera2
 description: Android Camera2
 modified: 2015-03-07 16:34:06 +0800
 category: Android Camera2
@@ -13,7 +13,7 @@ featured: false
 published: true
 ---
 
-##CameraApp
+## CameraApp
 
 1. MediaSaver
 2. CaptureSessionManager
@@ -65,6 +65,6 @@ published: true
        */
       public SettingsManager getSettingsManager();
 
-##AbstractGalleryActivity
-##ActivityBase
-##CameraActivity
+## AbstractGalleryActivity
+## ActivityBase
+## CameraActivity

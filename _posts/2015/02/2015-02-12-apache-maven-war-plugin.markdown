@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Apache Maven WAR Plugin"
+title: Apache Maven WAR Plugin
 description: Apache Maven WAR Plugin
 modified: 2015-02-12 10:14:06 +0800
 category: Apache Maven
@@ -17,7 +17,7 @@ published: true
 
 ---
 
-##目标概述
+## 目标概述
 
 
 + `war:war` 构建一个war文件
@@ -27,10 +27,10 @@ published: true
 
 ---
 
-##使用
+## 使用
 
 
-#####1.使用`war:war`
+##### 1.使用`war:war`
 
 这是正常的使用maven-war插件方式。为了说明这一点,这是pom.xml中我们的项目
 
@@ -106,7 +106,7 @@ documentedproject-1.0-SNAPSHOT.war
       `-- websource.jsp
 ~~~
 
-#####2.使用`war:exploded`
+##### 2.使用`war:exploded`
 
 开发阶段加速测试可以使用`war:exploded`
 
@@ -154,7 +154,7 @@ mvn compile war:exploded
 </project>
 ~~~
 
-#####3.使用`war:inplace`
+##### 3.使用`war:inplace`
 
 类似`war:exploded`只是webapp文件夹目录位置不一样，默认在`src/main/webapp`
 

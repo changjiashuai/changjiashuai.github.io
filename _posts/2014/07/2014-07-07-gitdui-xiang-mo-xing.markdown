@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "git对象模型"
+title: git对象模型
 date: 2014-07-07 15:02:29 +0800
 comments: true
 categories: [git]
@@ -8,7 +8,7 @@ categories: [git]
 
 
 
-##SHA
+## SHA
 
 所有用来表示项目历史信息的文件,是通过一个40个字符的（40-digit）“对象名”来索引的，对象名看起来像这样:
 
@@ -16,13 +16,13 @@ categories: [git]
 
 你会在Git里到处看到这种“40个字符”字符串。每一个“对象名”都是对“对象”内容做SHA1哈希计算得来的，（SHA1是一种密码学的哈希算法）。这样就意味着两个不同内容的对象不可能有相同的“对象名”。
 
-###这样做会有几个好处：
+### 这样做会有几个好处：
 
 1. Git只要比较对象名，就可以很快的判断两个对象是否相同。
 2. 因为在每个仓库（repository）的“对象名”的计算方法都完全一样，如果同样的内容存在两个不同的仓库中，就会存在相同的“对象名”下。
 3. Git还可以通过检查对象内容的SHA1的哈希值和“对象名”是否相同，来判断对象内容是否正确。
 
-##对象
+## 对象
 
 每个对象(object) 包括三个部分：类型，大小和内容。大小就是指内容的大小，内容取决于对象的类型，有四种类型的对象："blob"、"tree"、 "commit" 和"tag"。
 
@@ -31,17 +31,17 @@ categories: [git]
 3. 一个“commit”只指向一个"tree"，它用来标记项目某一个特定时间点的状态。它包括一些关于时间点的元数据，如时间戳、最近一次提交的作者、指向上次提交（commits）的指针等等。
 4. 一个“tag”是来标记某一个提交(commit) 的方法。
 
-##与SVN的区别
+## 与SVN的区别
 
 Git与你熟悉的大部分版本控制系统的差别是很大的。也许你熟悉Subversion、CVS、Perforce、Mercurial 等等，
 他们使用 “增量文件系统” （Delta Storage systems）, 就是说它们存储每次提交(commit)之间的差异。Git正好与之相反，它会把你的每次提交的文件的全部内容（snapshot）都会记录下来。
 这会是在使用Git时的一个很重要的理念。
 
-##Blob对象
+## Blob对象
 
 一个blob通常用来存储文件的内容.
 
-![](/images/git/object-blob.png)
+![](/assets/images/2014/07/git/object-blob.png)
 
 你可以使用git show命令来查看一个blob对象里的内容。假设我们现在有一个Blob对象的SHA1哈希值，我们可以通过下面的的命令来查看内容：
 
@@ -60,11 +60,11 @@ Git与你熟悉的大部分版本控制系统的差别是很大的。也许你�
 因为blob对象内容全部都是数据，如两个文件在一个目录树（或是一个版本仓库）中有同样的数据内容，
 那么它们将会共享同一个blob对象。Blob对象和其所对应的文件所在路径、文件名是否改被更改都完全没有关系。
 
-##Tree 对象
+## Tree 对象
 
 一个tree对象有一串(bunch)指向blob对象或是其它tree对象的指针，它一般用来表示内容之间的目录层次关系。
 
-![](/images/git/object-tree.png)
+![](/assets/images/2014/07/git/object-tree.png)
 
 git show命令还可以用来查看tree对象，但是git ls-tree能让你看到更多的细节。如果我们有一个tree对象的SHA1哈希值，我们可以像下面一样来查看它：
 
@@ -107,11 +107,11 @@ Tree对象、blob对象和其它所有的对象一样，都用其内容的SHA1�
 1. 在submodules里，trees对象也可以指向commits对象. 请参见 Submodules 章节)
 2. 所有的文件的mode位都是644 或 755，这意味着Git只关心文件的可执行位.
 
-##Commit对象
+## Commit对象
 
 "commit对象"指向一个"tree对象", 并且带有相关的描述信息.
 
-![](/images/git/object-commit.png)
+![](/assets/images/2014/07/git/object-commit.png)
 
 你可以用 --pretty=raw 参数来配合 git show 或 git log 去查看某个提交(commit):
 
@@ -152,7 +152,7 @@ Tree对象、blob对象和其它所有的对象一样，都用其内容的SHA1�
 2. 一般用 git commit 来创建一个提交(commit), 这个提交(commit)的父对象一般是当前分支(current HEAD),　
 同时把存储在当前索引(index)的内容全部提交.
 
-##对象模型
+## 对象模型
 
 现在我们已经了解了3种主要对象类型(blob, tree 和 commit), 好现在就让我们大概了解一下它们怎么组合到一起的.
 
@@ -170,14 +170,14 @@ Tree对象、blob对象和其它所有的对象一样，都用其内容的SHA1�
 
 如果我们把它提交(commit)到一个Git仓库中, 在Git中它们也许看起来就如下图:
 
-![](/images/git/objects-example.png)
+![](/assets/images/2014/07/git/objects-example.png)
 
 你可以看到: 每个目录都创建了tree对象(包括根目录),每个文件都创建了一个对应的blob对象。
 最后有一个commit对象来指向根tree对象(root of trees),这样我们就可以追踪项目每一项提交内容.
 
 ##标签对象
 
-![](/images/git/object-tag.png)
+![](/assets/images/2014/07/git/object-tag.png)
 
 一个标签对象包括一个对象名(译者注:就是SHA1签名),对象类型,标签名,标签创建人的名字("tagger"),
 还有一条可能包含有签名(signature)的消息。你可以用 [git cat-file](http://www.kernel.org/pub/software/scm/git/docs/git-cat-file.html)

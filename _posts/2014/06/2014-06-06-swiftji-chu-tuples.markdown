@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Swift基础---Tuples"
+title: Swift基础---Tuples
 date: 2014-06-06 14:24:52 +0800
 comments: true
 categories: [Swift]

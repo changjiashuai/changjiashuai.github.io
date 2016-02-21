@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "swift体验1"
+title: swift体验1
 date: 2014-06-04 14:09:04 +0800
 comments: true
 categories: [Swift]
@@ -24,7 +24,7 @@ categories: [Swift]
 码清单并立即看到结果。
 
 
-##变量
+## 变量
 用`let`创建常量，用`var`创建变量。这个常量的值在编译期不需要知道，但是在创建时必须
 初始化。这意味着你可以使用常量赋值一次,而用在许多地方。
 

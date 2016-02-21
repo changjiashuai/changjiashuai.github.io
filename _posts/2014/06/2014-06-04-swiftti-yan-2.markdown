@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "Swift体验2"
+title: Swift体验2
 date: 2014-06-04 14:09:32 +0800
 comments: true
 categories: [Swift]
 ---
 
 
-##控制流
+## 控制流
 
 使用`if`和`switch`做条件判断，使用`for-in`,`for`,`while`,`do-while`做循环
 操作。括号中的条件或循环变量是可选的。括号的身体是必需的。

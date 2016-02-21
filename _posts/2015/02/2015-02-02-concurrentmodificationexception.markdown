@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "ConcurrentModificationException"
+title: ConcurrentModificationException
 description: Java List ConcurrentModificationException
 modified: 2015-02-02 17:31:06 +0800
 category: Java List

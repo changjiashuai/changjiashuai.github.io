@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Swift---泛型(Generics)"
+title: Swift---泛型(Generics)
 date: 2014-06-09 14:28:12 +0800
 comments: true
 categories: [Swift]
@@ -11,7 +11,7 @@ categories: [Swift]
 
 >例如要交换两个变量值的问题
 
-##不用泛型
+## 不用泛型
 
     //Int类型交换
     func swapTwoInts(inout a: Int, inout b: Int){
@@ -41,7 +41,7 @@ categories: [Swift]
       b = temp
     }
 
-##使用泛型
+## 使用泛型
 
     func swapTwoValues<T>(inout a: T, inout b: T){
       let temp = a
@@ -62,7 +62,7 @@ categories: [Swift]
 
 >Swift中自带的Array和Dictionary都是使用泛型实现的，下面通过泛型自定义简单的Stack
 
-##不用泛型
+## 不用泛型
 
     struct IntStack{
       var items = Int[]()
@@ -75,7 +75,7 @@ categories: [Swift]
       }
     }
 
-##使用泛型
+## 使用泛型
 
     struct Stack<T>{
       var items = T[]()

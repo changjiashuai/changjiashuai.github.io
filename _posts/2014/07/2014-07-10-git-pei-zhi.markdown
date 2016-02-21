@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Git 配置"
+title: Git 配置
 date: 2014-07-10 11:06:09 +0800
 comments: true
 categories: [git]

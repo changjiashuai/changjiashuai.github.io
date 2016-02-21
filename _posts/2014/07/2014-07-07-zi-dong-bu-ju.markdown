@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "自动布局"
+title: 自动布局
 date: 2014-07-07 08:33:15 +0800
 comments: true
 categories: [iOS]
@@ -40,61 +40,61 @@ categories: [iOS]
                       constant:-padding];
 
 
-##Visual Format Syntax
+## Visual Format Syntax
 
 *1. Standard Space*
 
       [button]-[textField]
 
-  ![](images/AutoLayout/standardSpace.png)
+  ![](/assets/images/2014/07/AutoLayout/standardSpace.png)
 
 *2. Width Constraint*
 
       [button(>=50)]
 
-  ![](images/AutoLayout/widthConstraint.png)
+  ![](/assets/images/2014/07/AutoLayout/widthConstraint.png)
 
 *3. Connection to Superview*
 
       |-50-[purpleBox]-50-|
 
-  ![](images/AutoLayout/connectionToSuperview.png)
+  ![](/assets/images/2014/07/AutoLayout/connectionToSuperview.png)
 
 *4. Vertical Layout*
 
       V:[topField]-10-[bottomField]
 
-  ![](images/AutoLayout/verticalLayout.png)
+  ![](/assets/images/2014/07/AutoLayout/verticalLayout.png)
 
 *5. Flush Views*
 
       [maroonView][blueView]
 
-  ![](images/AutoLayout/flushViews.png)
+  ![](/assets/images/2014/07/AutoLayout/flushViews.png)
 
 *6. Priority*
 
       [button(100@20)]
 
-  ![](images/AutoLayout/priority.png)
+  ![](/assets/images/2014/07/AutoLayout/priority.png)
 
 *7. Equal Widths*
 
       [button1(==button2)]
 
-  ![](images/AutoLayout/equalWidths.png)
+  ![](/assets/images/2014/07/AutoLayout/equalWidths.png)
 
 *8. Multiple Predicates*
 
       [flexibleButton(>=70,<=100)]
 
-  ![](images/AutoLayout/multiplePredicates.png)
+  ![](/assets/images/2014/07/AutoLayout/multiplePredicates.png)
 
 *9. A Complete Line of Layout*
 
       |-[find]-[findNext]-[findField(>=20)]-|
 
-  ![](images/AutoLayout/completeLayout.png)
+  ![](/assets/images/2014/07/AutoLayout/completeLayout.png)
 
 
 

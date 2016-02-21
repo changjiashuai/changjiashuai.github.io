@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Android Debug Bridge"
+title: Android Debug Bridge
 description: Android Debug Bridge
 modified: 2015-02-06 16:08:06 +0800
 category: Android ADB
@@ -13,7 +13,7 @@ featured: false
 published: true
 ---
 
-##ADB概述
+## ADB概述
 
 Android Debug Bridge，Android调试桥接器，简称adb，是用于管理模拟器或真机状态的万能工具，
 采用了客户端-服务器模型，包括三个部分：
@@ -46,7 +46,7 @@ Android Debug Bridge，Android调试桥接器，简称adb，是用于管理模�
 Android应用程序，就不需要从命令行使用adb了，ADT插件已经提供了透明的集成。不过，还是可以在调试等
 需要的时候直接使用adb。
 
-##使用adb命令
+## 使用adb命令
 
 从开发用电脑的命令行或脚本文件中使用adb命令的用法是：
 
@@ -55,7 +55,7 @@ Android应用程序，就不需要从命令行使用adb了，ADT插件已经提�
 当使用的时候，程序会调用adb客户端。因为adb客户端不需要关联到任何模拟器，所以如果有多个模拟器
 或手机正在运行，就需要使用-d参数指定要操作的是哪一个。
 
-##查询模拟器或手机状态
+## 查询模拟器或手机状态
 
 了解adb服务端连接的模拟器或手机可以帮助更好的使用adb命令，这可以通过devices命令列举出来：
 
@@ -87,7 +87,7 @@ Android应用程序，就不需要从命令行使用adb了，ADT插件已经提�
 
 如果没有模拟器或手机在运行，该状态返回的是no device。
 
-##操作指定的模拟器或手机
+## 操作指定的模拟器或手机
 
 如果有多个模拟器或手机正在运行，当使用adb命令的时候就需要指定目标设备，这可以通过使用`-s`选项
 参数实现，用法是：
@@ -102,7 +102,7 @@ Android应用程序，就不需要从命令行使用adb了，ADT插件已经提�
 
 需要注意的是，如果使用了-s而没有指定设备的话，adb会报错。
 
-##安装应用程序
+## 安装应用程序
 
 可以使用adb从开发用电脑中复制应用程序并且安装到模拟器或手机上，使用install命令即可，在这个
 命令中，必须指定待安装的.apk文件的路径：
@@ -114,7 +114,7 @@ Android应用程序，就不需要从命令行使用adb了，ADT插件已经提�
 注意，如果使用了安装有ADT插件的Eclipse开发环境，就不需要直接使用adb或aapt命令来安装应用
 程序了，ADT插件可以自动完成这些操作。
 
-##转发端口
+## 转发端口
 
 可以使用`forward`命令转发端口 — 将特定端口上的请求转发到模拟器或手机的不同的端口上。下例是
 从6100端口转到7100端口：
@@ -125,7 +125,7 @@ Android应用程序，就不需要从命令行使用adb了，ADT插件已经提�
 
      adb forward tcp:6100 local:logd
 
-##与模拟器或手机传输文件
+## 与模拟器或手机传输文件
 
 可以使用adb的`pull`和`push`命令从模拟器或手机中复制文件，或者将文件复制到模拟器或手机中。
 与`install`命令不同，它仅能复制.apk文件到特定的位置,`pull和`push`命令可以复制任意文件
@@ -146,7 +146,7 @@ Android应用程序，就不需要从命令行使用adb了，ADT插件已经提�
 
      adb push foo.txt /sdcard/foo.txt
 
-##adb命令列表
+## adb命令列表
 
 下表列出了所有adb支持的命令及其说明：
 
@@ -191,7 +191,7 @@ Android应用程序，就不需要从命令行使用adb了，ADT插件已经提�
 |Shell       |shell                   |在目标模拟器或手机上启动远程SHELL       |参见 Issuing Shell Commands以获得更多信息。
 |            |shell [<shellCommand>]  |在目标模拟器或手机上执行shellCommand然后退出远程SHELL |
 
-##执行Shell命令
+## 执行Shell命令
 
 Adb提供了shell来在模拟器或手机上运行各种各样的命令，这些命令的二进制形式存在于这个路径中：
 
@@ -237,7 +237,7 @@ Monkey是运行于模拟器或手机上的一个程序，通过生成伪随机�
 
 关于monkey更多的选项及详细信息，请参见UI/Application Exerciser Monkey。
 
-##其他Shell命令
+## 其他Shell命令
 
 下表列出了很多有效的adb shell命令，完整的列表可以通过启动模拟器并且使用adb –help命令获取。
 
@@ -255,11 +255,11 @@ Monkey是运行于模拟器或手机上的一个程序，通过生成伪随机�
 |stop                                    |停止模拟器或手机
 
 
-##使用logcat查看日志
+## 使用logcat查看日志
 
 Android日志系统提供了从众多应用程序和系统程序中收集和查看调试信息的机制，这些信息被收集到一系统循环缓冲区中，可以 logcat 命令查看和过滤。
 
-##使用logcat 命令
+## 使用logcat 命令
 
 查看和跟踪系统日志缓冲区的命令logcat的一般用法是：
 
@@ -275,7 +275,7 @@ Android日志系统提供了从众多应用程序和系统程序中收集和查�
 
       # logcat
 
-##过滤日志输出
+## 过滤日志输出
 
 每一条日志消息都有一个标记和优先级与其关联。
 
@@ -325,7 +325,7 @@ S — 无记载 (最高优先级，没有什么会被记载)
 
 需要注意的是，如果是在远程shell或是使用adb shell logcat 命令运行logcat ， ANDROID_LOG_TAGS 不会导出到模拟器或手机设备上。
 
-##控制日志格式
+## 控制日志格式
 
 日志消息在标记和优先级之外还有很多元数据字段，这些字段可以通过修改输出格式来控制输出结果，-v 选项加上下面列出的内容可以控制输出字段：
 
@@ -353,7 +353,7 @@ S — 无记载 (最高优先级，没有什么会被记载)
 
 注意只能在 -v 选项中指定一种格式。
 
-##Viewing Alternative Log Buffers
+## Viewing Alternative Log Buffers
 
      Android日志系统为日志消息保持了多个循环缓冲区，而且不是所有的消息都被发送到默认缓冲区，要想查看这些附加的缓冲区，可以使用-b 选项，以下是可以指定的缓冲区：
 
@@ -371,7 +371,7 @@ S — 无记载 (最高优先级，没有什么会被记载)
 
      adb logcat -b radio
 
-##查看stdout和stderr
+## 查看stdout和stderr
 
 默认的，Android系统发送 stdout 和 stderr (System.out 和 System.err) 输出到 /dev/null。 在 Dalvik VM进程，可以将输出
 复制到日志文件，在这种情况下，系统使用 stdout 和 stderr标记写入日志，优先级是I。
@@ -398,7 +398,7 @@ Logcat命令选项列表
 |-s                    |设置默认的过滤器为无输出
 |-v <format>           |设置输出格式，默认的是brief，支持的格式列表参见Controlling Log Output Format.
 
-##停止adb服务
+## 停止adb服务
 
 在某些情况下，可能需要终止然后重启服务端进程，例如adb不响应命令的时候，可以通过重启解决问题。
 

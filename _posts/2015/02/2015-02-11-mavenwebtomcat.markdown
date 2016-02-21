@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Maven部署Web项目到Tomcat的配置"
+title: Maven部署Web项目到Tomcat的配置
 description: Maven部署Web项目到Tomcat的配置
 modified: 2015-02-11 17:33:06 +0800
 category: Java Maven Tomcat
@@ -13,7 +13,7 @@ featured: false
 published: true
 ---
 
-##配置Tomcat角色
+## 配置Tomcat角色
 
 Maven自动部署实际上调的是Tomcat安装目录下的manager功能。而为了能正常访问`http://localhost:8080/manager`页面，我们需要修改`$TOMCAT_HOME/conf`目录下的`tomcat-users.xml`
 
@@ -29,7 +29,7 @@ Maven自动部署实际上调的是Tomcat安装目录下的manager功能。而�
 </tomcat-users>					
 ~~~
 
-##修改pom.xml增加Tomcat Maven插件
+## 修改pom.xml增加Tomcat Maven插件
 
 我使用的Tomcat7，pom.xml中增加如下配置：
 
@@ -51,7 +51,7 @@ Maven自动部署实际上调的是Tomcat安装目录下的manager功能。而�
 ~~~
 上面username、password来自tomcat-users.xml。server是Tomcat服务器名称。path是访问应用的路径。url指定Tomcat管理页路径。
 
-##修改Maven的settings.xml
+## 修改Maven的settings.xml
 
 在`$USER_HOME/.m2`目录下找到`settings.xml`，添加server节点
 
@@ -66,7 +66,7 @@ Maven自动部署实际上调的是Tomcat安装目录下的manager功能。而�
 ~~~
 上面的username、password依然与`tomcat-users.xml`中相同，id与`pom.xml`中的server相同
 
-##部署项目到Tomcat
+## 部署项目到Tomcat
 
 先确保Tomcat服务器已经启动，然后cd到项目根目录，运行下面的命令
 
@@ -74,7 +74,7 @@ Maven自动部署实际上调的是Tomcat安装目录下的manager功能。而�
 mvn clean tomcat7:redeploy
 ~~~
 
-##部署成功，如下:
+## 部署成功，如下:
 
 ~~~
 ➜  party  mvn clean tomcat7:redeploy
@@ -83,29 +83,29 @@ mvn clean tomcat7:redeploy
 [INFO] ------------------------------------------------------------------------
 [INFO] Building party 1.0-SNAPSHOT
 [INFO] ------------------------------------------------------------------------
-[INFO] 
+[INFO]
 [INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ party ---
 [INFO] Deleting /Users/CJS/Documents/VersionRepository/Git/party/target
-[INFO] 
+[INFO]
 [INFO] >>> tomcat7-maven-plugin:2.2:redeploy (default-cli) > package @ party >>>
-[INFO] 
+[INFO]
 [INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ party ---
 [INFO] Using 'UTF-8' encoding to copy filtered resources.
 [INFO] Copying 0 resource
-[INFO] 
+[INFO]
 [INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ party ---
 [INFO] Changes detected - recompiling the module!
 [INFO] Compiling 3 source files to /Users/CJS/Documents/VersionRepository/Git/party/target/classes
-[INFO] 
+[INFO]
 [INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ party ---
 [INFO] Using 'UTF-8' encoding to copy filtered resources.
 [INFO] Copying 0 resource
-[INFO] 
+[INFO]
 [INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ party ---
 [INFO] Nothing to compile - all classes are up to date
-[INFO] 
+[INFO]
 [INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ party ---
-[INFO] 
+[INFO]
 [INFO] --- maven-war-plugin:2.2:war (default-war) @ party ---
 [INFO] Packaging webapp
 [INFO] Assembling webapp [party] in [/Users/CJS/Documents/VersionRepository/Git/party/target/party]
@@ -114,9 +114,9 @@ mvn clean tomcat7:redeploy
 [INFO] Webapp assembled in [56 msecs]
 [INFO] Building war: /Users/CJS/Documents/VersionRepository/Git/party/target/party.war
 [INFO] WEB-INF/web.xml already added, skipping
-[INFO] 
+[INFO]
 [INFO] <<< tomcat7-maven-plugin:2.2:redeploy (default-cli) < package @ party <<<
-[INFO] 
+[INFO]
 [INFO] --- tomcat7-maven-plugin:2.2:redeploy (default-cli) @ party ---
 [INFO] Deploying war to http://blog.vzhibo.tv:8080/party  
 Uploading: http://xxxx:8080/manager/text/deploy?path=%2Fparty&update=true
@@ -139,4 +139,3 @@ Uploaded: http://xxxx:8080/manager/text/deploy?path=%2Fparty&update=true (1774 K
 初次部署用的是`tomcat7:deploy`命令，重新部署可以用`tomcat7:redeploy`命令，Tomcat Maven插件支持的命令包括：`run`、`shutdown`、`run-war-only`、`exec-war`、`standalone-war-only`、`deploy`、`standalone-war`、`undeploy`、`run-war`、`redeploy`等。
 
 [maven-plugin-2.2](http://tomcat.apache.org/maven-plugin-2.2/index.html)
-

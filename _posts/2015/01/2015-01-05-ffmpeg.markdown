@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "FFmpeg参数详解"
+title: FFmpeg参数详解
 description: ffmpeg
 headline: ffmpeg
 modified: 2015-01-05
@@ -12,7 +12,7 @@ comments: true
 mathjax:
 ---
 
-##通用选项
+## 通用选项
 
 `-L` license
 
@@ -46,7 +46,7 @@ mathjax:
 
 `-itsoffset offset` 设置以秒为基准的时间偏移，该选项影响所有后面的输入文件。该偏移被加到输入文件的时间戳，定义一个正偏移意味着相应的流被延迟了offsetm秒。 [-]hh:mm:ss[.xxx]的格式也支持
 
-##视频选项
+## 视频选项
 
 `-b bitrate` 设置比特率，缺省200kb/s
 
@@ -83,7 +83,7 @@ mathjax:
 
 `-passlogfile file` 选择两遍的记录文件名file
 
-##高级视频选项
+## 高级视频选项
 
 `-g gop_size` 设置图像组大小
 
@@ -162,7 +162,7 @@ mathjax:
 
     0 FF_MB_DECISION_SIMPLE
     使用mb_cmp
-    1 FF_MB_DECISION_BITS 
+    1 FF_MB_DECISION_BITS
     2 FF_MB_DECISION_RD
 
 `-4mv` 使用4个运动矢量 仅用于mpeg4
@@ -187,7 +187,7 @@ mathjax:
 
 `-vhook module` 插入视频处理模块 module 包括了模块名和参数，用空格分开
 
-##音频选项
+## 音频选项
 
 `-ab bitrate` 设置音频码率
 
@@ -199,7 +199,7 @@ mathjax:
 
 `acodec codec` 使用codec编解码
 
-##音频/视频捕获选项
+## 音频/视频捕获选项
 
 `-vd device` 设置视频捕获设备。比如/dev/video0
 
@@ -211,7 +211,7 @@ mathjax:
 
 `-av device` 设置音频设备 比如/dev/dsp
 
-##高级选项
+## 高级选项
 
 `-map file:stream` 设置输入流映射
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Android finish All activity"
+title: Android finish All activity
 description: Android finish All activity
 modified: 2015-02-02 17:55:06 +0800
 category: Android
@@ -13,7 +13,7 @@ featured: false
 published: true
 ---
 
-##android开发中如何结束所有的activity
+## android开发中如何结束所有的activity
 
 一、每一个activity都有自己的生命周期，被打开了最终就要被关闭。
 

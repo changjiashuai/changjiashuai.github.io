@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Android-zipalign"
+title: Android-zipalign
 description: Android zipalign
 modified: 2015-02-06 15:19:06 +0800
 category: Android zipalign

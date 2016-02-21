@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Swift基础---Optionals"
+title: Swift基础---Optionals
 date: 2014-06-06 14:23:42 +0800
 comments: true
 categories: [Swift]
@@ -49,7 +49,7 @@ categories: [Swift]
 
     // prints "123 has an integer value of 123"
 
-##nil
+## nil
 
 >可以设置可选值变量为一个特殊值nil
 
@@ -63,7 +63,7 @@ categories: [Swift]
     // surveyAnswer自动被设置为nil
 
 
-##Implicitly Unwrapped Optionals
+## Implicitly Unwrapped Optionals
 
     let possibleString: String? = "An optional string."
     println(possibleString!)

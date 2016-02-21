@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "ffmpeg Documentation 1"
+title: ffmpeg Documentation
 description: ffmpeg
 headline: ffmpeg
 modified: 2014-12-29

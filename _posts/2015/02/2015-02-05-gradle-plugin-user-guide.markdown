@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Gradle Plugin User Guide"
+title: Gradle Plugin User Guide
 description: Gradle Plugin User Guide
 modified: 2015-02-05 17:39:06 +0800
 category: Android

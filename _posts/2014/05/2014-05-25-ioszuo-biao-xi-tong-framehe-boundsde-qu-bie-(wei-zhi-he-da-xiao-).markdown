@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "iOS坐标系统frame和bounds的区别（位置和大小）"
+title: iOS坐标系统frame和bounds的区别（位置和大小）
 date: 2014-05-25 14:03:11 +0800
 comments: true
 categories: [iOS]
 ---
 
 
-##iOS
+## iOS
 
 >1. 首先左上角为坐标原点（0，0）
 >2. CGPoint创建坐标点也就是位置
@@ -20,7 +20,7 @@ categories: [iOS]
 
 ![](http://img.my.csdn.net/uploads/201303/24/1364058232_8785.jpg)
 
-##cocos2d
+## cocos2d
 
 >1. 首先左下角为坐标原点（0，0）
 >2. anchorPoint中心点（0.5，0.5）

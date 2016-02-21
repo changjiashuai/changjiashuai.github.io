@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "采用现代Objective-C"
+title: 采用现代Objective-C
 date: 2014-06-01 12:16:43 +0800
 comments: true
 categories: [iOS, Objective-C]
@@ -15,7 +15,7 @@ Xcode提供了一个工具来帮助做这些结构性的变化。但在使用这
 解工具为你的代码做了什么改变以及为什么。本文强调了一些最重要的和有用的现代
 化方式可以用在你的代码中。
 
-##instancetype
+## instancetype
 >使用instancetype关键字作为返回类型的方法，该方法返回一个类的实例（或
 该类的子类）这些方法包括alloc,init,和类工厂方法。
 
@@ -103,7 +103,7 @@ Xcode提供了一个工具来帮助做这些结构性的变化。但在使用这
 >或者,您可以在Xcode使用现代objective-c变换器自动进行转换您的代码。更多信息请看[使用Xcode重构你的代码](http://#)。
 
 
-##Properties
+## Properties
 >一个public或private的Objective-C属性使用@property语法声明的。
 
         @property (readonly, getter=isBlue) BOOL blue;
@@ -143,7 +143,7 @@ Boolean属性的命名约定是声明他们的getter方法以'is'开头。
 - getter应该幂等的（如果一个getter方法调用了两次，那么第二次结果应该和第一次是相同的）。
 但是,每次geeter被调用返回结果是可接受的。
 
-###怎样适配
+### 怎样适配
 >定义一组方法,有资格被转换成属性,诸如此类的:
 
         - (NSColor *)backgroundColor;
@@ -159,7 +159,7 @@ Boolean属性的命名约定是声明他们的getter方法以'is'开头。
 >或者,您可以在Xcode使用现代objective-c变换器自动进行转换您的代码。更多信息请看[使用Xcode重构你的代码](http://jianshu.io/p/528eace594cd#)。
 
 
-##Enumeration Macros
+## Enumeration Macros
 >NS_ENUM和NS_OPTIONS宏提供一个简洁、简单的定义枚举的方法和基于c语言的选项。
 这些宏在Xcode中实现可以显式地指定枚举类型和选项的大小。此外,这种由旧的编译器语法声明枚举的方式,可以被新的编译器正确评估和解释潜在的类型信息。
 
@@ -192,7 +192,7 @@ Boolean属性的命名约定是声明他们的getter方法以'is'开头。
 >像这样的枚举,NS_OPTIONS宏定义一个名称和一个类型。然而,通常类型应该是NSUInteger。
 
 
-###怎样适配
+### 怎样适配
 >代替你的枚举声明,如:
 
         enum{
@@ -247,7 +247,7 @@ Boolean属性的命名约定是声明他们的getter方法以'is'开头。
 和autorelease。ARC评估对象的生命周期需求并自动插入适当的内存管理要求在编译时间。编译器也会为你产生适当的dealloc方法。
 
 
-###怎样适配
+### 怎样适配
 >Xcode提供了一个工具,自动化转换的(如删除retain和release调用)帮助你解决不能自动修复的问题。使用ARC工具：
 选择Edit > Refactor > Convert to Objective-C ARC。这个工具转换项目中所有的文件使用ARC。
 
