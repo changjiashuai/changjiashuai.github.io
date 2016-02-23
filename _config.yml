@@ -5,7 +5,7 @@ welcome_message:
 description: The future belongs to those who believe in the beauty of their dreams.
 creator:
 
-url:
+url: "http://changjiashuai.github.io"
 
 permalink: /:year/:month/:title/
 
@@ -20,8 +20,8 @@ cover_color: red
 
 # The blog button should not be removed.
 blog_button:
-    title: Blog
-    description: Visit blog
+    title: 博客
+    description: 访问博客
 
 # Navigation buttons in the front page.
 nav:
@@ -49,5 +49,5 @@ social:
 
 # Google Analytics
 ga:
-    # id: your_ga_id
-    # host: your_host
+    id: UA-52767888-1
+    host: changjiashuai.github.io
