@@ -52,4 +52,4 @@ CATEGORY_PREFERENCE	  | android.intent.category.PREFERENCE	| 该Activity是参�
 CATEGORY_TEST	        | android.intent.category.TEST	      | 该Activity是一个测试
 CATEGORY_CAR_DOCK	    | android.intent.category.CAR_DOCK	  | 指定手机被插入汽车底座(硬件)时运行该Activity
 CATEGORY_DESK_DOCK	  | android.intent.category.DESK_DOCK	  | 指定手机被插入桌面底座(硬件)时运行该Activity
-|CATEGORY_CAR_MODE	  | android.intent.category.CAR_MODE	  | 设置该Activity可在车载环境下使用
+CATEGORY_CAR_MODE	    | android.intent.category.CAR_MODE	  | 设置该Activity可在车载环境下使用
