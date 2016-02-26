@@ -1,4 +1,17 @@
-# Android中Acition和Category常量表
+---
+layout: post
+title: "Android中Action和Category常量表"
+description: Android中Action和Category常量表
+headline: Android
+modified: 2016-02-26
+category: Android
+tags: [Android]
+image:
+feature:
+comments: true
+mathjax:
+---
+
 
 # Action
 
