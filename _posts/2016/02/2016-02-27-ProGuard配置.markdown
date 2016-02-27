@@ -1,0 +1,120 @@
+---
+layout: post
+title: "ProGuard配置"
+description: ProGuard配置
+headline: Android
+modified: 2016-02-27
+category: ProGuard
+tags: [ProGuard]
+image:
+feature:
+comments: true
+mathjax:
+---
+
+
+# 保留选项（配置不进行处理的内容）
+
+```
+保护指定的类文件和类的成员
+-keep {Modifier} {class_specification}
+
+保护指定类的成员，如果此类受到保护他们会保护的更好
+-keepclassmembers {modifier} {class_specification}
+
+保护指定的类和类的成员，但条件是所有指定的类和类成员是要存在
+-keepclasseswithmembers {class_specification}
+
+保护指定的类和类的成员的名称（如果他们不会压缩步骤中删除）
+-keepnames {class_specification}
+
+保护指定的类的成员的名称（如果他们不会压缩步骤中删除）
+-keepclassmembernames {class_specification}
+
+保护指定的类和类的成员的名称，如果所有指定的类成员出席（在压缩步骤之后）
+-keepclasseswithmembernames {class_specification}
+
+列出类和类的成员-keep选项的清单，标准输出到给定的文件
+-printseeds {filename}
+```
+
+# 压缩
+
+```
+不压缩输入的类文件
+-dontshrink
+
+-printusage {filename}
+
+-whyareyoukeeping {class_specification}
+```
+
+
+# 优化
+
+```
+不优化输入的类文件
+-dontoptimize
+
+优化时假设指定的方法，没有任何副作用
+-assumenosideeffects {class_specification}
+
+优化时允许访问并修改有修饰符的类和类的成员
+-allowaccessmodification
+```
+
+# 混淆
+
+```
+不混淆输入的类文件
+-dontobfuscate
+
+使用给定文件中的关键字作为要混淆方法的名称
+-obfuscationdictionary {filename}
+
+混淆时应用侵入式重载
+-overloadaggressively
+
+确定统一的混淆类的成员名称来增加混淆
+-useuniqueclassmembernames
+
+重新包装所有重命名的包并放在给定的单一包中
+-flattenpackagehierarchy {package_name}
+
+重新包装所有重命名的类文件中放在给定的单一包中
+-repackageclass {package_name}
+
+混淆时不会产生形形色色的类名
+-dontusemixedcaseclassnames
+
+保护给定的可选属性，例如LineNumberTable, LocalVariableTable, SourceFile, Deprecated, Synthetic, Signature, and InnerClasses.
+-keepattributes {attribute_name,...}
+
+设置源文件中给定的字符串常量
+-renamesourcefileattribute {string}
+```
+
+# `?|*`后面的文件名，类名，或者包名等可以使用占位符代替
+`？`表示一个字符
+可以匹配多个字符，但是如果是一个类，不会匹配其前面的包名
+`*` 可以匹配多个字符，会匹配前面的包名。
+
+在android中在android Manifest文件中的activity，service，provider， receviter，等都不能进行混淆。一些在xml中配置的view也不能进行混淆，android提供的默认配置中都有。
+
+# ProGuard的输出文件及用处
+混淆之后，会给我们输出一些文件，在gradle方式下是在<project_dir>/build/proguard/目录下，ant是在<project_dir>/bin/proguard目录，eclipse构建在<project_dir>/proguard目录像。
+
+分别有以下文件：
++ dump.txt 描述apk文件中所有类文件间的内部结构。
++ mapping.txt 列出了原始的类，方法，和字段名与混淆后代码之间的映射。
++ seeds.txt 列出了未被混淆的类和成员
++ usage.txt 列出了从apk中删除的代码
+
+另外Proguard文件中包含retrace脚本，可以将一个被混淆过的堆栈跟踪信息还原成一个可读的信息，window下时retrace.bat，linux和mac是retrace.sh，在<sdk_root>/tools/proguard/文件夹下。语法为：
+
+> retrace.bat|retrace.sh [-verbose] mapping.txt [<stacktrace_file>]
+
+例如：
+```
+retrace.bat -verbose mapping.txt obfuscated_trace.txt
+```
