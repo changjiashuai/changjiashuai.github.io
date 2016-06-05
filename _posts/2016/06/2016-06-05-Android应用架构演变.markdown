@@ -1,0 +1,122 @@
+---
+layout: post
+title: "Android 应用架构演变"
+description: Android 应用架构演变
+headline: Android 应用架构演变
+modified: 2016-06-05
+category: Android 应用架构演变
+tags: [Android, 应用架构演变]
+image:
+feature:
+comments: true
+mathjax:
+---
+
+
+# Android 应用架构演变
+
+## 原始架构
+  > Android刚开始的时候没有第三方库，基本方式就是`AsyncTask` 和`Handler`配合使用，简单直接没有过多分层设计
+
+  ![](/assets/images/2016/06/origin.png)
+
+  代码被划分为两层结构：`Data Layer(数据层)`负责从数据源获取和存储数据；`View Layer(视图层)`负责处理并将数据展示在`UI`上
+
+  * `DataProvider`提供一些方法，使`Activity`和`Fragment`能够实现与数据源的数据交互。这些方法使用`AsyncTask`在一个单独的线程内执行耗时操作（网络请求、数据库操作等），然后通过回调将结果返回给`Activity`或`Fragment`。
+
+
+  ### 优点
+  1. 结构少容易理解每层的目的
+
+
+  ### 缺点
+  1. `Activity`和`Fragment`变得非常庞大并且难以维护
+  2. 可能会导致过多的回调嵌套`Callback Hell（回调地狱）`，代码结构丑陋难以阅读和理解，在此基础上添加或更改新特性成本巨大而且容易出错
+  3. 很多业务逻辑都在`Activity`和`Fragment`中，单元测试根本没法进行
+
+
+## MVC（来自Java Web）
+  > 随着界面越来越多，业务越来越复杂，开发人员开始考虑架构设计，本身Android就是用Java语言编写的，所以自然就首先考虑用原来Java Web端成熟的设计方案`MVC`尝试划分结构
+
+  ![](/assets/images/2016/06/mvc.png)
+
+  ### 优点
+  1. 耦合性低：减少模块之间代码的相互影响
+  2. 可扩展性好：添加需求，更改代码相对容易。
+  3. 模块职责划分明确：利于代码维护。
+
+
+  ### 缺点
+  1. 相对于`Android APP`来说`MVC`也仅仅起到了部分解耦的作用，主要是`Controller`将`View`视图和`Model`模型分离，但是在`Activity`中有很多关于视图`UI`的显示代码，因此`View`视图和`Activity`控制器并不是完全分离的，即一部分`View`视图和`Activity Controller`控制器是绑定在一起的，所以相对于`Java`所适用的`MVC`方案，在`Android`中仅仅起到部分优化效果，在`UI`更新逻辑复杂多变的情况弊端更加会被放大。
+
+## MVP
+  > Google对Android APP开发第一次结构设计的尝试
+
+  ![](/assets/images/2016/06/mvp.png)
+
+  `MVP`是对`MVC`的改进，让Model和View完全解耦
+
+  ### 优点
+  1. `Model`与`View`不存在直接关系
+  2. Presenter与View、Model的交互使用接口定义交互操作进一步达到松耦合也可以通过接口更加方便地进行单元测试
+
+
+  ### 缺点
+  1. 代码很清晰，不过增加了很多
+
+
+## MVVM
+  >MVVM最早是由微软提出的 Google实现了DataBinding机制。要实现`MVVM`的`ViewModel`就需要把数据与`UI`进行绑定，`<data>`节点就为此提供了一个桥梁，我们先在`<data>`中声明一个`variable`，这个变量会为`UI`元素提供数据（例如`TextView`的`android:text`），然后在`Java`代码中把”后台”数据与这个`variable` 进行绑定。 类似于`Java Web JSP`中的标签语法
+
+
+
+  `View`和`ViewModel`绑定在一起，`ViewModel`的改变会同步到`View`层，从而`View`层作出响应
+
+  ![](/assets/images/2016/06/mvvm.png)
+
+  ### 优点
+  1. 隔离了UI层和业务逻辑层，降低程序的耦合度
+
+
+  ### 缺点
+  1. 会产生很多类型
+
+## RxJava(Reactive Programming for Java)+RxAndroid
+  > `RxJava`允许通过异步流的方式处理数据，并且提供了很多操作符，可以将这些操作符作用于流上从而实现转换，过滤或者合并数据等操作。`RxAndroid`在`RxJava`基础上实现了线程的自由切换。
+
+  ![](/assets/images/2016/06/legend.png)
+
+  ### 优点
+  1. RxJava的Observable和操作符避免了嵌套回调的出现。
+  2. 响应式编程能够非常好的简化代码，让代码的可读性、稳定性都得到很大程度的提高。
+
+  ### 缺点
+  1. 仅仅是一种编程方式，对`Android`而言，没有生命周期概念，需要自己维护管理
+
+## agera(Reactive Programming for Android)
+  > Google实现的类似`RxJava`的函数式编程
+
+  ### Activation lifecycle and event chain
+  > 一个`Observable`当它被至少一个`Updatable`观察时它处于`active`状态，当他不被任意一个`Updatable`观察时处于`inactive`状态。从另一个角度说：一个`Updatable`通过注册到处于`inactive`的`Observable`上来激活`Observable`；当处于`active`的`Observable`仅具有一个注册的`Updatable`时，该`Updatable`通过取消注册来使其停用。
+
+  ![](/assets/images/2016/06/observablelifecycle.png)
+
+  ### Observables and updatables
+  > 一个`Observable`代表一个事件源，一个`Updatable`观察这些事件。一个`Updatable`通过`Observable.addUpdatable(Updatable)`注册到`observable`，通过`Observable.removeUpdatable(Updatable)`取消注册。一个事件以`Updatable.update()`的形式被发送到`updatable`。
+
+  ![](/assets/images/2016/06/downstream.png)
+
+  ### UI lifecycle
+  > 事件链特别适合伴随UI的生命周期构建响应式结构
+
+  ![](/assets/images/2016/06/uilifecycle.png)
+
+  ### 优点
+  1. 结构少容易理解每层的目的
+
+  ### 缺点
+  1. 刚推出还没被大面积使用
+
+## 总结
+
+> `原始架构` `MVC` `MVP` `MVVM`这四种架构方式对`Android APP`来说都是项目结构采用一种方式后基本架构就不会改变。`RxJava` `agera`仅仅是一种编程方式的改变，但这种方式对手机应用开发来说非常合适，鉴于以上架构的演变，`原始架构`基本不会有人再使用了，`MVC`在移动端也是不太适合，`MVP` `MVVM`都是Google自家推出的，个人实践中尝试的`RxJava`+`MVP`组合使用，`MVVM`个人感觉用着不爽，涉及`xml`和代码两处容易出问题。`agera`还在开发阶段，后续怎样未知。
