@@ -25,7 +25,9 @@ mathjax:
 
 1. Include the library as local library project.
 
-    ``` compile 'com.yalantis:ucrop:2.1.1' ```
+    ```
+     compile 'com.yalantis:ucrop:2.1.1'
+    ```
 
 2. Add UCropActivity into your AndroidManifest.xml
 
@@ -38,17 +40,17 @@ mathjax:
 
 3. The uCrop configuration is created using the builder pattern.
 
-	```java
+	 ```
     UCrop.of(sourceUri, destinationUri)
         .withAspectRatio(16, 9)
         .withMaxResultSize(maxWidth, maxHeight)
         .start(context);
-    ```
+   ```
 
 
 4. Override `onActivityResult` method and handle uCrop result.
 
-    ```java
+    ```
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK && requestCode == UCrop.REQUEST_CROP) {
@@ -290,7 +292,7 @@ or you can set attributes just you need
 ## android-image-picker
 > android 图片多选控件
 
-![][/assets/images/2016/07/android-image-picker_preview.gif]
+![](/assets/images/2016/07/android-image-picker_preview.gif)
 
 ### Gradle
 ``` groovy
