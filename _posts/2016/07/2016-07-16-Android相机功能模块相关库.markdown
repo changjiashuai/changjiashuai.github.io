@@ -12,9 +12,8 @@ comments: true
 mathjax:
 ---
 
-## 相机
+## material-camera
 ---
-  1. *material-camera*
 
   #### Material Camera
 
@@ -181,8 +180,9 @@ mathjax:
   }
   ```
 
+## Sticker-Camera
   ---
-  > *Sticker-Camera*
+
 
   ![](/assets/images/2016/07/StickerCamera_01.png)
 
