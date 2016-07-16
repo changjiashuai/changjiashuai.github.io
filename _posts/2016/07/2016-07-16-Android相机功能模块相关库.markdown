@@ -1,0 +1,223 @@
+---
+layout: post
+title: "Android 相机功能模块相关库"
+description: Android 相机功能模块相关库
+headline: Android 相机功能模块相关库
+modified: 2016-07-16
+category: Android 相机功能模块相关库
+tags: [Android, 相机功能模块相关库]
+image:
+feature:
+comments: true
+mathjax:
+---
+
+## 相机
+---
+  1. *material-camera*
+
+  #### Material Camera
+
+  Android's video recording APIs are very difficult to figure out, especially since a lot of manufacturers
+  like to mount their camera sensors upside down or sideways. This library is a result of lots of research
+  and experimentation to get video recording to work universally.
+
+  ![](/assets/images/2016/07/material_camera_showcase.png)
+  ---
+
+  #### Notice
+
+  Please report any issues you have, and include device information. Camera behavior can be unpredictable
+  across different Android manufacturers and versions, especially on pre-Lollipop devices. I've done quite
+  a bit of testing, but it's possible I missed something.
+
+  **Some of this documentation may be outdated, exploration of the library is encouraged.**
+
+  ---
+
+  #### Dependency
+
+  Add this in your module's `build.gradle` file:
+
+  ```gradle
+  dependencies {
+      // ... other dependencies
+
+      compile 'com.afollestad:material-camera:0.2.14'
+  }
+  ```
+
+  ---
+
+
+  # Basics
+
+  #### Android Manifest
+
+  First, you have to register two library Activities from your app's `AndroidManifest.xml` file:
+
+  ```xml
+  <activity
+      android:name="com.afollestad.materialcamera.CaptureActivity"
+      android:theme="@style/MaterialCamera.CaptureActivity" />
+  <activity
+      android:name="com.afollestad.materialcamera.CaptureActivity2"
+      android:theme="@style/MaterialCamera.CaptureActivity" />
+  ```
+
+  Feel free to use your own custom theme. The included themes give the activities a good default look.
+  See the sample project for more details.
+
+  #### Code
+
+  ```java
+  private final static int CAMERA_RQ = 6969;
+
+  File saveFolder = new File(Environment.getExternalStorageDirectory(), "MaterialCamera Sample");
+  if (!saveFolder.mkdirs())
+      throw new RuntimeException("Unable to create save directory, make sure WRITE_EXTERNAL_STORAGE permission is granted.");
+
+  new MaterialCamera(this)                               // Constructor takes an Activity
+      .allowRetry(true)                                  // Whether or not 'Retry' is visible during playback
+      .autoSubmit(false)                                 // Whether or not user is allowed to playback videos after recording. This can affect other things, discussed in the next section.
+      .saveDir(saveFolder)                               // The folder recorded videos are saved to
+      .primaryColorAttr(R.attr.colorPrimary)             // The theme color used for the camera, defaults to colorPrimary of Activity in the constructor
+      .showPortraitWarning(true)                         // Whether or not a warning is displayed if the user presses record in portrait orientation
+      .defaultToFrontFacing(false)                       // Whether or not the camera will initially show the front facing camera
+      .retryExits(false)                                 // If true, the 'Retry' button in the playback screen will exit the camera instead of going back to the recorder
+      .restartTimerOnRetry(false)                        // If true, the countdown timer is reset to 0 when the user taps 'Retry' in playback
+      .continueTimerInPlayback(false)                    // If true, the countdown timer will continue to go down during playback, rather than pausing.
+      .videoEncodingBitRate(1024000)                     // Sets a custom bit rate for video recording.
+      .audioEncodingBitRate(50000)                       // Sets a custom bit rate for audio recording.
+      .videoFrameRate(24)                                // Sets a custom frame rate (FPS) for video recording.
+      .qualityProfile(MaterialCamera.QUALITY_HIGH)       // Sets a quality profile, manually setting bit rates or frame rates with other settings will overwrite individual quality profile settings
+      .videoPreferredHeight(720)                         // Sets a preferred height for the recorded video output.
+      .videoPreferredAspect(4f / 3f)                     // Sets a preferred aspect ratio for the recorded video output.
+      .maxAllowedFileSize(1024 * 1024 * 5)               // Sets a max file size of 5MB, recording will stop if file reaches this limit. Keep in mind, the FAT file system has a file size limit of 4GB.
+      .iconRecord(R.drawable.mcam_action_play)           // Sets a custom icon for the button used to start recording
+      .iconStop(R.drawable.mcam_action_stop)             // Sets a custom icon for the button used to stop recording
+      .iconFrontCamera(R.drawable.mcam_camera_front)     // Sets a custom icon for the button used to switch to the front camera
+      .iconRearCamera(R.drawable.mcam_camera_rear)       // Sets a custom icon for the button used to switch to the rear camera
+      .iconPlay(R.drawable.evp_action_play)              // Sets a custom icon used to start playback
+      .iconPause(R.drawable.evp_action_pause)            // Sets a custom icon used to pause playback
+      .iconRestart(R.drawable.evp_action_restart)        // Sets a custom icon used to restart playback
+      .labelRetry(R.string.mcam_retry)                   // Sets a custom button label for the button used to retry recording, when available
+      .labelUseVideo(R.string.mcam_use_video)            // Sets a custom button label for the button used to confirm a recording
+      .start(CAMERA_RQ);                                 // Starts the camera activity, the result will be sent back to the current Activity
+  ```
+
+  **Note**: For `retryExists(true)`, `onActivityResult()` in the `Activity` that starts the camera will
+  receive `MaterialCamera.STATUS_RETRY` as the value of the `MaterialCamera.STATUS_EXTRA` intent extra.
+
+  ---
+
+  #### Length Limiting
+
+  You can specify a time limit for recording. `countdownMillis(long)`, `countdownSeconds(float)`,
+  and `countdownMinutes(float)` are all methods for length limiting.
+
+  ```java
+  new MaterialCamera(this)
+      .countdownMinutes(2.5f)
+      .start(CAMERA_RQ);
+  ```
+
+  When the countdown reaches 0, recording stops. There are different behaviors that can occur after this based on
+  `autoSubmit` and `autoRetry`:
+
+  1. `autoSubmit(false)`, `allowRetry(true)`
+      * The user will be able to playback the recording, and the 'Retry' button will be visible. This is default behavior.
+  2. `autoSubmit(false)`, `allowRetry(false)`
+      * The user will be able to playback the recording, but the 'Retry' button will be hidden.
+  3. `autoSubmit(true)`, `allowRetry(false)`
+      * The user won't be able to playback the recording, the result will immediately be returned to the starting Activity.
+  4. `autoSubmit(true)`, `allowRetry(true)`
+      * If you don't specify a length limit, the behavior will be the same as number 3. If you do specify a length limit, the user is allowed to retry, but the countdown timer will continue until it reaches 0. When the countdown is complete, the result will be returned to the starting Activity automatically.
+
+  If you want the countdown to start immediately when the camera is open, as opposed to when the user presses
+  'Record', you can set `countdownImmediately(true)`:
+
+  ```java
+  new MaterialCamera(this)
+      .countdownMinutes(2.5f)
+      .countdownImmediately(true)
+      .start(CAMERA_RQ);
+  ```
+
+  ---
+
+  #### Receiving Results
+
+  ```java
+  public class MainActivity extends AppCompatActivity {
+
+      private final static int CAMERA_RQ = 6969;
+
+      @Override
+      protected void onCreate(Bundle savedInstanceState) {
+          super.onCreate(savedInstanceState);
+          setContentView(R.layout.activity_main);
+
+          new MaterialCamera(this)
+              .start(CAMERA_RQ);
+      }
+
+      @Override
+      protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+          super.onActivityResult(requestCode, resultCode, data);
+
+          // Received recording or error from MaterialCamera
+          if (requestCode == CAMERA_RQ) {
+
+              if (resultCode == RESULT_OK) {
+                  Toast.makeText(this, "Saved to: " + data.getDataString(), Toast.LENGTH_LONG).show();
+              } else if(data != null) {
+                  Exception e = (Exception) data.getSerializableExtra(MaterialCamera.ERROR_EXTRA);
+                  e.printStackTrace();
+                  Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+              }
+          }
+      }
+  }
+  ```
+
+  ---
+  > *Sticker-Camera*
+
+  ![](/assets/images/2016/07/StickerCamera_01.png)
+
+  ![](/assets/images/2016/07/StickerCamera_02.png)
+
+  ![](/assets/images/2016/07/StickerCamera_03.png)
+
+  ![](/assets/images/2016/07/StickerCamera_04.png)
+
+  ![](/assets/images/2016/07/StickerCamera_05.png)
+
+
+  #### StickerCamera
+  这是一款集成了相机,图片裁剪,给图片贴贴图打标签的APP。
+
+  #### Feature
+    - 实现相机功能
+    - 实现对图片进行裁剪的功能
+    - 图片的滤镜功能
+    - 能为图片添加贴纸(贴纸可移动,放大,旋转)
+    - 能为图片添加标签(同样可以移动)
+    - 本地保存制作好的图片,并展示
+    - 较多的自定义控件,不错的项目架构
+
+  # Thanks
+
+  - [Gpu-image](https://github.com/CyberAgent/android-gpuimage)
+  - [Android-Universal-Image-Loader](https://github.com/nostra13/Android-Universal-Image-Loader)
+  - [ImageViewTouch](https://github.com/ojas-webonise/ImageViewTouch)
+  - [butterknife](https://github.com/JakeWharton/butterknife)
+  - [Notes](https://github.com/lguipeng/Notes)
+  - [SystemBarTint](https://github.com/jgilfelt/SystemBarTint)
+  - [cropimage](https://github.com/biokys/cropimage)
+  - [EventBus](https://github.com/greenrobot/EventBus)
+  - [Aviary-Android-SDK](https://github.com/kitek/Aviary-Android-SDK)
+  - [fastjson](https://github.com/alibaba/fastjson)
+  - [PagerSlidingTabStrip](https://github.com/astuetz/PagerSlidingTabStrip)
+  - [android-common](https://github.com/Trinea/android-common)
