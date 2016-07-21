@@ -1,3 +1,17 @@
+---
+layout: post
+title: "Android Studio中六种依赖"
+description: 在Android Studio中有六种依赖
+headline: 在Android Studio中有六种依赖
+modified: 2016-04-22
+category: 在Android Studio中有六种依赖
+tags: [Android Studio, 依赖]
+image:
+feature:
+comments: true
+mathjax:
+---
+
 # 在Android Studio中有六种依赖
 
 Compile，Provided，APK，Test compile，Debug compile，Release compile
