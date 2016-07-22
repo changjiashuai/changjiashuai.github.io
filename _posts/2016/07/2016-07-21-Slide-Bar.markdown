@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Slide Bar"
+title: "Slide Bar相关"
 description: Slide Bar
 headline: Slide Bar
 modified: 2016-07-21
@@ -12,9 +12,8 @@ comments: true
 mathjax:
 ---
 
-# Slide Bar
 
-Android-QuickSideBar
+##Android-QuickSideBar
 ==========
 帮助快速查阅对应分组的侧边栏，可以配合任意列表，demo中给出配合RecyclerView(浮动分组使用stickyheadersrecyclerview)。
 

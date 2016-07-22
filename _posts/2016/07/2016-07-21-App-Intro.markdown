@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "App Intro"
+title: "App Intro相关"
 description: App Intro
 headline: App Intro
 modified: 2016-07-21
@@ -12,7 +12,7 @@ comments: true
 mathjax:
 ---
 
-#AppIntro
+
 https://github.com/PaoloRotolo/AppIntro
 
 

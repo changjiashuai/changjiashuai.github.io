@@ -12,7 +12,6 @@ comments: true
 mathjax:
 ---
 
-# BaseRecyclerViewAdapterHelper
 
 #它能做什么？
 - **优化Adapter代码（减少百分之70%代码）**

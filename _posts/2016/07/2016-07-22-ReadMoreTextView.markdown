@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "ReadMoreTextView"
+title: "TextView相关"
 description: ReadMoreTextView
 headline: ReadMoreTextView
 modified: 2016-07-22
@@ -13,7 +13,6 @@ mathjax:
 ---
 
 
-# ReadMoreTextView
 >A Custom TextView with trim text
 
 ## Download
