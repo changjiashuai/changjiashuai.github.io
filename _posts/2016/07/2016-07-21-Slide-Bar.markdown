@@ -83,3 +83,9 @@ OnQuickSideBarTouchListener
 >全新的快速索引导航栏，联系人字母排序侧边栏。
 
 ![](/assets/images/2016/07/gif5.gif)
+
+
+# 7449/SlideView
+>模仿微信通讯录侧边快速索引
+
+https://github.com/7449/SlideView
