@@ -24,11 +24,14 @@ mathjax:
 	```
 
 3. 添加API Keys到你的gradle配置文件
+
 	gradle配置文件位置： `$USER_HOME/.gradle/gradle.properties`
 
 4. 使用 publishing plugin
 
+
 	Simple Example:
+
 	```
 	// First, apply the publishing plugin
 	buildscript {
@@ -82,7 +85,9 @@ mathjax:
 	}
 	```
 
+
 	Full Example:
+
 	```
 	// First, apply the publishing plugin
 	buildscript {
@@ -180,3 +185,5 @@ mathjax:
 	```
 
 5. 通过审核后，会收到邮件通知，就可以在`https://plugins.gradle.org`这里搜索到你的插件了^……^。
+
+
