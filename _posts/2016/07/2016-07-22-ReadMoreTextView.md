@@ -16,8 +16,10 @@ mathjax:
 >A Custom TextView with trim text
 
 ## Download
+
 To add the ReadMoreTextView library to your Android Studio project, simply add the following gradle dependency:
-```java
+
+```
 compile 'com.borjabravo:readmoretextview:2.0.1'
 ```
 
@@ -30,7 +32,7 @@ To use the ReadMoreTextView on your app, add the following code to your layout:
     android:id="@+id/text_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"/>
-```    
+```
 
 You can customize ReadMoreTextView with:
 
