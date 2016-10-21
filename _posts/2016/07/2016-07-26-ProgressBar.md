@@ -25,20 +25,25 @@ mathjax:
 <img src="/assets/images/2016/07/union.gif" width="220"/>
 
 ## quick start
-####1.Add root build.gradle
+#### 1.Add root build.gradle
+
 ```
  repositories {
         // ...
         maven { url "https://jitpack.io" }
  }
 ```
-####2.Add build.gradle
+
+#### 2.Add build.gradle
+
 ```
 dependencies {
 	        compile 'com.github.feeeei:CircleSeekbar:v1.0.3'
 	}
 ```
-####3.Added to the XML
+
+#### 3.Added to the XML
+
 ```
     <io.feeeei.circleseekbar.CircleSeekBar
         android:id="@+id/seekbar"
@@ -49,6 +54,7 @@ dependencies {
 ```
 
 ## attrs
+
 ```
   <!-- process -->
   <attr name="wheel_max_process" format="integer" />
@@ -77,7 +83,7 @@ dependencies {
 
   <!-- if you want to block touchListener,use like processBar,
    only allow the code to control the schedule, you can change this attribute to false -->
-  <attr name="wheel_can_touch" format="boolean" />    
+  <attr name="wheel_can_touch" format="boolean" />
 ```
 
 # ProgressView
@@ -161,7 +167,8 @@ The **line style**:
 * count
 
 例如 :
-```java
+
+```
 <com.dinuscxj.progressbar.CircleProgressBar
 	android:layout_width="50dp"
 	android:layout_height="50dp"
@@ -187,7 +194,9 @@ The **line style**:
 	app:line_width="4dp"
 	app:line_count="30"/>
 ```
+
 ### 优点
-1. 继承ProgressBar， 不必关心当前进度状态的保存， ProgressBar 已经在onSaveInstanceState（）和 onRestoreInstanceState(Parcelable state)中帮我们写好了。
+
+1. 继承ProgressBar， 不必关心当前进度状态的保存， ProgressBar 已经在onSaveInstanceState（）和 onRestoreInstanceState(Parcelable state)
 2. 定制性很强，可以设置两种风格的进度条，设置进度条的颜色和进度文本的颜色和大小， 由于代码中对于进度文本的格化化是使用的String.format(), 所以进度文本可以根据需要随意定制
 3. 代码优雅，代码注释很全面，格式整齐，可以直接在xml中设置相关的属性。
