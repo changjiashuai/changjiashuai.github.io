@@ -12,7 +12,7 @@ comments: true
 mathjax:
 ---
 
-
+---
 1. 注册
 	> https://plugins.gradle.org/user/register
 
@@ -23,12 +23,12 @@ mathjax:
   gradle.publish.secret=***
 	```
 
-3. 添加API Keys到你的gradle配置文件
+3. 添加API Keys到你的gradle配置文件 gradle配置文件位置：
+  ```
+	$USER_HOME/.gradle/gradle.properties
+  ```
 
-	gradle配置文件位置： `$USER_HOME/.gradle/gradle.properties`
-
-4. 使用 publishing plugin
-
+4.  使用 publishing plugin
 
 	Simple Example:
 
@@ -84,7 +84,6 @@ mathjax:
 	  }
 	}
 	```
-
 
 	Full Example:
 
@@ -185,5 +184,3 @@ mathjax:
 	```
 
 5. 通过审核后，会收到邮件通知，就可以在`https://plugins.gradle.org`这里搜索到你的插件了^……^。
-
-
