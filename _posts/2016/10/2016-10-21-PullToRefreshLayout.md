@@ -12,7 +12,7 @@ comments: true
 mathjax:
 ---
 
-[![](https://jitpack.io/v/changjiashuai/PullToRefreshLayout.svg)](https://jitpack.io/#changjiashuai/PullToRefreshLayout)
+![](https://jitpack.io/v/changjiashuai/PullToRefreshLayout.svg)](https://jitpack.io/#changjiashuai/PullToRefreshLayout)
 
 > **Pull Refresh Layout Library , If you have any question or suggestion  with this library , welcome to tell me !**
 
@@ -21,7 +21,7 @@ mathjax:
 
 
 ## Demo
-![默认HeaderViewAndFooterView](screenshots/默认HeaderViewAndFooterView.gif) ![自定义HeaderViewAndFooterView](screenshots/自定义HeaderViewAndFooterView.gif)
+![默认HeaderViewAndFooterView](https://github.com/changjiashuai/PullToRefreshLayout/blob/master/screenshots/自定义HeaderViewAndFooterView.gif) ![自定义HeaderViewAndFooterView](https://github.com/changjiashuai/PullToRefreshLayout/blob/master/screenshots/自定义HeaderViewAndFooterView.gif)
 
 ## Usage
 
@@ -89,6 +89,7 @@ Simple
 ### Step 3
 
 It's very simple use just like .
+
 ```java
    mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
    mPullToRefreshLayout = (PullToRefreshLayout) findViewById(R.id.pullToRefreshLayout);
