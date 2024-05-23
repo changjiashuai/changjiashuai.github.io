@@ -1,0 +1,245 @@
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+
+    <title>
+        JsBridge Demo
+    </title>
+
+    <style>
+        body {
+            background-color: #93B874;
+        }
+        .full-width-button {
+            width: 100%;
+            border-radius: 24px;
+            padding: 10px 20px; /* 根据需要调整内边距 */
+            margin: 10px 0px;
+            font-size: 24px; /* 根据需要调整字体大小 */
+            text-align: center;
+            background: linear-gradient(to right, #F23A3AFF, #F23A3AAE); /* 按钮背景颜色 */
+            color: white; /* 按钮文本颜色 */
+            border: none;
+            cursor: pointer;
+        }
+        .file-button {
+            width: 100%;
+            border-radius: 24px;
+            padding: 10px 20px; /* 根据需要调整内边距 */
+            margin: 10px 0px;
+            font-size: 24px; /* 根据需要调整字体大小 */
+            text-align: center;
+            background: linear-gradient(to right, #F23A3AFF, #F23A3AAE); /* 按钮背景颜色 */
+            color: white; /* 按钮文本颜色 */
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="show"></div>
+<button class="full-width-button" onclick="checkNotificationsEnabled();">获取应用通知是否开启</button>
+<button class="full-width-button" onclick="navigateToNotification();">导航到系统应用通知设置界面</button>
+<button class="full-width-button" onclick="setNotification();">设置应用通知提示弹框</button>
+<button class="full-width-button" onclick="showToast('test toast content');">显示Toast</button>
+<button class="full-width-button" onclick="showCustomerDialog();">显示客服弹框</button>
+<button class="full-width-button" onclick="showSkuDialog();">显示sku弹框</button>
+<button class="full-width-button" onclick="showFloatCartView();">显示购物车</button>
+<button class="full-width-button" onclick="hideFloatCartView();">隐藏购物车</button>
+<button class="full-width-button" onclick="addProductToCart();">加购到购物车</button>
+<button class="full-width-button" onclick="doLogin();">登录</button>
+<button class="full-width-button" onclick="getUserInfo();">用户信息</button>
+<button class="full-width-button" onclick="getAppInfo();">应用信息</button>
+
+<input type="file" value="打开文件" class="file-button"/>
+
+</body>
+
+<script>
+    function showCustomerDialog() {
+        //call native method
+        window.WebViewJavascriptBridge.callHandler(
+            'showCustomerDialog'
+            , null
+            , function(responseData) {
+                //List<ProductSKU.OneSKUSpecAttr>?
+                document.getElementById("show").innerHTML = "show customer dialog from java, data = " + responseData
+            }
+        );
+    }
+
+    function showSkuDialog() {
+        var skuParams = '{"productCode":null,"productSKU":{"skuList":[{"skuCode":"S20240326034810KBtpJ","sellStock":"189","sellPrice":"2.00","image":{"width":778,"height":685,"url":"https://cdn.alvinclub.ca/images/mall/product/mockData/excel/SHOP_TEST_002/6582e4b9-9e9d-499d-b1a6-32df81329800.jpeg"},"specAttrs":[{"attrName":"款式","attrValue":"30CM白壳三色光"},{"attrName":"发货仓","attrValue":"广州仓"}],"stockTense":"10"},{"skuCode":"S20240326034810etABJ","sellStock":"199","sellPrice":"2.00","image":{"width":780,"height":686,"url":"https://cdn.alvinclub.ca/images/mall/product/mockData/excel/SHOP_TEST_002/0028d43f-2acc-4057-908d-d1fe2d523b6d.jpeg"},"specAttrs":[{"attrName":"款式","attrValue":"40CM黑壳三色"},{"attrName":"发货仓","attrValue":"广州仓"}],"stockTense":"10"},{"skuCode":"S202403260348107csNH","sellStock":"63","sellPrice":"2.00","image":{"width":778,"height":685,"url":"https://cdn.alvinclub.ca/images/mall/product/mockData/excel/SHOP_TEST_002/6582e4b9-9e9d-499d-b1a6-32df81329800.jpeg"},"specAttrs":[{"attrName":"款式","attrValue":"40CM白壳三色"},{"attrName":"发货仓","attrValue":"广州仓"}],"stockTense":"10"}],"specAttrs":[{"attrName":"款式","attrValues":[{"value":"30CM黑壳三色光","image":{"width":780,"height":686,"url":"https://cdn.alvinclub.ca/images/mall/product/mockData/excel/SHOP_TEST_002/0028d43f-2acc-4057-908d-d1fe2d523b6d.jpeg"},"needUpdate":true,"stockStatus":"NO_SKU"},{"value":"30CM白壳三色光","image":{"width":778,"height":685,"url":"https://cdn.alvinclub.ca/images/mall/product/mockData/excel/SHOP_TEST_002/6582e4b9-9e9d-499d-b1a6-32df81329800.jpeg"},"needUpdate":false,"stockStatus":"NORMAL"},{"value":"40CM黑壳三色","image":{"width":780,"height":686,"url":"https://cdn.alvinclub.ca/images/mall/product/mockData/excel/SHOP_TEST_002/0028d43f-2acc-4057-908d-d1fe2d523b6d.jpeg"},"needUpdate":false,"stockStatus":"NORMAL"},{"value":"40CM白壳三色","image":{"width":778,"height":685,"url":"https://cdn.alvinclub.ca/images/mall/product/mockData/excel/SHOP_TEST_002/6582e4b9-9e9d-499d-b1a6-32df81329800.jpeg"},"needUpdate":false,"stockStatus":"NORMAL"}]},{"attrName":"发货仓","attrValues":[{"value":"广州仓","needUpdate":false,"stockStatus":"NORMAL"}]}],"selectorDecisions":[{"icon":"https://cdn.alvinclub.ca/images/static/product/detail/ProtectorShield.png","text":"免费送货 · 免费退货"},{"icon":"https://cdn.alvinclub.ca/images/static/product/detail/ProtectorShield.png","text":"支付安全 · 购买保障"}],"stockTense":"10","mainImage":{"url":"https://cdn.alvinclub.ca/images/mall/product/mockData/excel/SHOP_TEST_002/O1CN01rlSwYu1knTXB6eVXw_!!2215412054728-0-cib.jpg"},"activity":{},"outSpecAttrs":[{"attrName":"款式","attrValue":"40CM白壳三色"},{"attrName":"发货仓","attrValue":"广州仓"}]},"recommendSkuSpecAttr":[{"attrName":"款式","attrValue":"40CM白壳三色"},{"attrName":"发货仓","attrValue":"广州仓"}]}';
+        //call native method
+        window.WebViewJavascriptBridge.callHandler(
+            'showSkuDialog'
+            , skuParams
+            , function(responseData) {
+                //List<ProductSKU.OneSKUSpecAttr>?
+                document.getElementById("show").innerHTML = "show sku dialog from java, data = " + responseData
+            }
+        );
+    }
+
+    function showFloatCartView() {
+        //call native method
+        window.WebViewJavascriptBridge.callHandler(
+            'floatCartViewManager'
+            , {'op': '0'}
+            , function(responseData) {
+                document.getElementById("show").innerHTML = "show cart view from java, data = " + responseData
+            }
+        );
+    }
+
+    function hideFloatCartView() {
+        //call native method
+        window.WebViewJavascriptBridge.callHandler(
+            'floatCartViewManager'
+            , {'op': '1'}
+            , function(responseData) {
+                document.getElementById("show").innerHTML = "hide cart view from java, data = " + responseData
+            }
+        );
+    }
+
+    function addProductToCart() {
+        //call native method
+        window.WebViewJavascriptBridge.callHandler(
+            'floatCartViewManager'
+            , {'op': '2', "skuCode": '001'}
+            , function(responseData) {
+                document.getElementById("show").innerHTML = "add product to cart from java, data = " + responseData
+            }
+        );
+    }
+
+    function checkNotificationsEnabled() {
+        //call native method
+        window.WebViewJavascriptBridge.callHandler(
+            'notification'
+            , {'op':'0'}
+            , function(responseData) {
+                document.getElementById("show").innerHTML = "get Notifications Enabled from java, data = " + responseData
+                const data = JSON.parse(responseData);
+                var enabled = data["enabled"]
+                if(!enabled){
+                    setNotification()
+                }
+            }
+        );
+    }
+
+    function navigateToNotification() {
+        //call native method
+        window.WebViewJavascriptBridge.callHandler(
+            'notification'
+            , {'op':'1'}
+            , function(responseData) {
+                document.getElementById("show").innerHTML = "navigateToNotification from java, data = " + responseData
+                showToast(responseData)
+            }
+        );
+    }
+
+    function setNotification() {
+        //call native method
+        window.WebViewJavascriptBridge.callHandler(
+            'notification'
+            , {'op':'2', 'content':'custom dialog content or default'}
+            , function(responseData) {
+                document.getElementById("show").innerHTML = "set Notifications Enabled from java, data = " + responseData
+                showToast(responseData)
+            }
+        );
+    }
+
+    function doLogin() {
+        //call native method
+        window.WebViewJavascriptBridge.callHandler(
+            'doLogin'
+            , null
+            , function(responseData) {
+                document.getElementById("show").innerHTML = "doLogin from java, data = " + responseData
+            }
+        );
+    }
+
+    function getUserInfo() {
+        //call native method
+        window.WebViewJavascriptBridge.callHandler(
+            'getUserInfo'
+            , null
+            , function(responseData) {
+                document.getElementById("show").innerHTML = "getUserInfo from java, data = " + responseData
+            }
+        );
+    }
+
+    function getAppInfo() {
+        //call native method
+        window.WebViewJavascriptBridge.callHandler(
+            'getAppInfo'
+            , null
+            , function(responseData) {
+                document.getElementById("show").innerHTML = "getAppInfo from java, data = " + responseData
+            }
+        );
+    }
+
+    function showToast(data) {
+        //call native method
+        window.WebViewJavascriptBridge.callHandler(
+            'showToast'
+            , data
+            , function(responseData) {
+                document.getElementById("show").innerHTML = "showToast from java, data = " + responseData
+            }
+        );
+    }
+
+    //init
+    function connectWebViewJavascriptBridge(callback) {
+        if (window.WebViewJavascriptBridge && WebViewJavascriptBridge.inited) {
+            callback(WebViewJavascriptBridge)
+        } else {
+            document.addEventListener(
+                'WebViewJavascriptBridgeReady'
+                , function() {
+                    callback(WebViewJavascriptBridge)
+                },
+                false
+            );
+        }
+    }
+
+    connectWebViewJavascriptBridge(function(bridge) {
+        bridge.init(function(message, responseCallback) {
+            console.log('JS got a message', message);
+            var data = {
+                'Javascript Responds': '测试中文!'
+            };
+
+            if (responseCallback) {
+                console.log('JS responding with', data);
+                responseCallback(data);
+            }
+        });
+
+        //native invoke js
+        bridge.registerHandler("functionInJs", function(data, responseCallback) {
+            document.getElementById("show").innerHTML = ("data from Java: = " + data + Date.now());
+            if (responseCallback) {
+                var responseData = "Javascript Says Right back aka!";
+                responseCallback(responseData);
+            }
+        });
+    })
+
+</script>
+
+</html>
+
